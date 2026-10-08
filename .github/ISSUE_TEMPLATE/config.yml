@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/picaportelabs/kubelatch/discussions
+    about: Ask, share how you use kubelatch, propose something
+  - name: Security vulnerability
+    url: https://github.com/picaportelabs/kubelatch/blob/main/SECURITY.md
+    about: Write to security@kubelatch.com, never a public issue
+  - name: Documentation
+    url: https://docs.kubelatch.com
+    about: The manual, in English and Spanish

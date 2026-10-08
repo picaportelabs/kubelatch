@@ -1,0 +1,62 @@
+# Example: run kubectl from GitHub Actions through kubelatch without storing
+# any secret in GitHub. The job asks GitHub for an OIDC id_token whose
+# audience is kubelatch's URL, kubelatch verifies it against GitHub's JWKS,
+# matches a trust rule (repository owner id + repository id, optionally ref
+# and environment) and answers with a short-lived credential and kubeconfig
+# for the rule's bot. Every kubectl request is audited as that bot.
+#
+# Setup in kubelatch (once): create a bot in Users, grant it a tier in
+# Permissions, and add a trust rule in CI with this repository's numeric
+# ids (curl -s https://api.github.com/repos/OWNER/REPO | jq '.owner.id, .id').
+# The runner must reach KUBELATCH_URL over https with a certificate it
+# trusts; the kubeconfig carries no CA (see the README for private CAs).
+name: kubectl via kubelatch
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # required: lets the job request the OIDC token
+  contents: read
+
+env:
+  KUBELATCH_URL: https://kubelatch.example.com   # exactly KUBELATCH_BASE_URL: it is the token's audience
+
+jobs:
+  pods:
+    runs-on: ubuntu-latest
+    # environment: prod   # uncomment if the trust rule sets an environment
+    steps:
+      - name: Request the OIDC token for kubelatch
+        run: |
+          ID_TOKEN=$(curl -sSf -G \
+            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            --data-urlencode "audience=$KUBELATCH_URL" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+          echo "::add-mask::$ID_TOKEN"
+          echo "ID_TOKEN=$ID_TOKEN" >> "$GITHUB_ENV"
+
+      - name: Exchange it for a kubelatch credential
+        run: |
+          RESPONSE=$(curl -sS -w '\n%{http_code}' -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg token "$ID_TOKEN" '{token:$token}')" "$KUBELATCH_URL/v1/ci/github-actions/token")
+          STATUS=$(printf '%s' "$RESPONSE" | tail -n1)
+          BODY=$(printf '%s' "$RESPONSE" | sed '$d')
+          if [ "$STATUS" != "201" ]; then
+            echo "kubelatch answered $STATUS: $(printf '%s' "$BODY" | jq -r '.error // .')" >&2
+            exit 1
+          fi
+          # The token and kubeconfig are shown exactly once: keep them out of the log.
+          printf '%s' "$BODY" | jq -r .token | xargs -I{} echo "::add-mask::{}"
+          # Only this job's user may read it; never ~/.kube/config.
+          (umask 077 && printf '%s' "$BODY" | jq -r .kubeconfig > "$RUNNER_TEMP/kubeconfig")
+          chmod 600 "$RUNNER_TEMP/kubeconfig"
+          echo "KUBECONFIG=$RUNNER_TEMP/kubeconfig" >> "$GITHUB_ENV"
+          echo "credential expires at $(printf '%s' "$BODY" | jq -r .expires_at)"
+
+      - name: kubectl through kubelatch
+        run: |
+          kubectl auth whoami          # bot:<name> with the kubelatch:* groups of its grants
+          kubectl get pods -n default

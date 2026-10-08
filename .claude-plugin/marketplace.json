@@ -1,0 +1,12 @@
+{
+  "name": "kubelatch",
+  "description": "kubelatch's plugin for Claude Code: Kubernetes through kubelatch's MCP server.",
+  "owner": { "name": "Picaporte Labs" },
+  "plugins": [
+    {
+      "name": "kubelatch",
+      "source": "./integrations/claude-code",
+      "description": "Kubernetes through kubelatch: its MCP server, a skill with the rules, and a hook that stops direct kubectl, helm and k9s."
+    }
+  ]
+}

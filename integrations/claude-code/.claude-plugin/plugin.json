@@ -1,0 +1,17 @@
+{
+  "name": "kubelatch",
+  "displayName": "kubelatch",
+  "description": "Kubernetes through kubelatch: its MCP server, a skill with the rules, and a hook that stops direct kubectl, helm and k9s.",
+  "author": { "name": "Picaporte Labs" },
+  "homepage": "https://docs.kubelatch.com/use/ai-agents/",
+  "repository": "https://github.com/picaportelabs/kubelatch",
+  "keywords": ["kubernetes", "kubectl", "mcp", "kubelatch"],
+  "userConfig": {
+    "kubelatch_url": {
+      "type": "string",
+      "title": "kubelatch URL",
+      "description": "The address you open kubelatch at, such as https://kubelatch.example.com, without /mcp and without a trailing slash",
+      "required": true
+    }
+  }
+}

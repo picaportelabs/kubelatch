@@ -1,0 +1,25 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: kubelatch-server version (the Edition page, or `kubelatch-server version`)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what happened instead. Logs without secrets (tokens, kubeconfigs, keys).
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options: [Web interface, kubelatch CLI, Proxy (kubectl, Helm, k9s), Reconciler or RBAC, CI exchange, MCP or AI agents, Helm chart, Documentation]
+    validations:
+      required: true

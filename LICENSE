@@ -1,0 +1,305 @@
+kubelatch End User License Agreement
+====================================
+
+Version 1.0, October 2026
+
+This End User License Agreement (the "Agreement") is a contract between
+Picaporte Labs, Spain (the "Licensor"), and the Licensee defined below. It
+governs the installation and use of the Software. By installing, running or
+using the Software, or by installing a License Key, the Licensee accepts this
+Agreement. A person who accepts it on behalf of an organisation represents that
+they have the authority to bind that organisation. If the Licensee does not
+accept this Agreement, it must not install or use the Software.
+
+
+1. Definitions
+--------------
+
+(a) "Software" means the kubelatch server, the kubelatch command-line client,
+    their container images, the Helm chart, the plugins and integrations
+    distributed with them, the documentation, and every update of them that the
+    Licensor makes available under this Agreement.
+
+(b) "Free edition" means the Software used without a valid License Key, within
+    the limits set out in section 2(b).
+
+(c) "Pro edition" means the Software used with a valid License Key, which lifts
+    the limits of the Free edition for the Seats and the term that the License
+    Key states.
+
+(d) "License Key" means a token signed by the Licensor that identifies the
+    Licensee and states its number of Seats, its expiry date and whether it is
+    a trial.
+
+(e) "Seats" means the number of people that a License Key allows to be enabled
+    at the same time, counted as distinct people across all the Instances in
+    which the same License Key is installed. Every enabled person counts,
+    administrators and break-glass accounts included; automated identities
+    (bots) do not.
+
+(f) "Licensee" means the natural or legal person that accepts this Agreement.
+    Where the Licensee is an organisation, its employees and contractors may
+    use the Software on its behalf, and the Licensee is responsible for their
+    compliance with this Agreement.
+
+(g) "Instance" means one deployment of the kubelatch server, with its own
+    database, together with the Kubernetes clusters registered in it.
+
+(h) "Pro Subscription Terms" means the terms that section 5 refers to.
+
+
+2. Grant of license
+-------------------
+
+(a) Subject to this Agreement, the Licensor grants the Licensee a
+    non-exclusive, non-transferable, non-sublicensable, worldwide license to
+    install and run any number of Instances of the Software for the Licensee's
+    internal business purposes.
+
+(b) Without a License Key, the license covers the Free edition, free of charge
+    and with no time limit, within these limits for each Instance: at most 2
+    registered clusters, at most 5 enabled people, audit records served for the
+    last 24 hours (and, in an Instance that never had a License Key, kept for
+    at most 24 hours), and the six system roles of the Software, without custom
+    roles. Section 4(e) describes what an Instance that once had a License Key
+    keeps.
+
+(c) With a valid License Key, the license covers the Pro edition for the Seats
+    and until the expiry date that the License Key states, plus the grace
+    period of section 4(d).
+
+(d) The Licensee may copy and adapt the configuration examples, CI workflow
+    examples and agent rules published with the Software, for use with the
+    Software.
+
+
+3. Restrictions
+---------------
+
+Except as this Agreement expressly allows, the Licensee shall not, and shall
+not let anyone else:
+
+(a) copy, distribute, sell, resell, rent, lease, lend or sublicense the
+    Software, in whole or in part, to any third party;
+
+(b) host the Software, or offer access to it, as a service for third parties;
+
+(c) reverse engineer, decompile or disassemble the Software, or attempt to
+    derive its source code, except to the extent that applicable law expressly
+    allows it despite this restriction;
+
+(d) remove, alter or obscure any notice of copyright, trademark or license in
+    the Software;
+
+(e) circumvent, disable or modify the limits of the Free edition or the
+    verification of License Keys, including by modifying the Software;
+
+(f) share a License Key with any third party, or install it in any Instance
+    other than the Licensee's own;
+
+(g) use the Software in breach of applicable law.
+
+
+4. License Keys and editions
+----------------------------
+
+(a) The Software verifies a License Key offline, against public keys built into
+    it. The verification calls no service of the Licensor and sends no data.
+
+(b) A License Key carries the Licensee's name and e-mail address, an
+    identifier, the number of Seats, the expiry date and whether it is a trial.
+    A trial License Key gives the Pro edition for 30 days, without a limit on
+    Seats and without a grace period after it expires.
+
+(c) The Software enforces the Seats in each Instance: if more people are
+    enabled in an Instance than the Seats allow, then after 30 days of grace
+    the Software stops new people from being added in that Instance until the
+    enabled people fit the Seats again. The Licensee shall keep within the
+    Seats the total number of distinct people enabled across all its
+    Instances in which the same License Key is installed and, when it needs
+    more, shall add Seats through the customer portal that the Pro
+    Subscription Terms describe.
+
+(d) When a paid License Key expires, the Pro edition continues for a grace
+    period of 30 days.
+
+(e) After the grace period, or when a trial ends, the Instance returns to the
+    limits of the Free edition for new registrations only. Nothing that exists
+    is removed or cut: access through the proxy, grants, credentials, clusters,
+    people and the custom roles already created keep working, and custom roles
+    can only be deleted. Audit records older than 24 hours are kept according
+    to the Licensee's configured retention, but are not served until a valid
+    License Key is installed again.
+
+(f) The Licensor commits to the Licensee that:
+
+    (i) what is in the Free edition stays in the Free edition, and its limits
+        will only ever be loosened, never tightened;
+
+    (ii) the Software sends no telemetry and calls no service of the Licensor:
+         License Keys are verified offline, and the Software works in
+         installations without access to the internet;
+
+    (iii) a limit only stops a new registration, and nothing that exists is
+          cut, as section 4(e) describes;
+
+    (iv) on request, a prospective or existing customer may review the source
+         code of the Software under a non-disclosure agreement, and the
+         Licensor will publish the summary of an external penetration test at
+         https://kubelatch.com/security/.
+
+
+5. Pro subscription
+-------------------
+
+The Pro edition is sold as a subscription. Its price, billing, renewal, Seats,
+trial and cancellation are governed by the Pro Subscription Terms published at
+https://kubelatch.com/terms/, which form part of this Agreement for a Licensee
+that buys a subscription or starts a trial. Where they conflict with this
+Agreement on a matter of subscription or payment, the Pro Subscription Terms
+prevail.
+
+
+6. Ownership and feedback
+-------------------------
+
+(a) The Software is licensed, not sold. The Licensor and its licensors keep all
+    rights, title and interest in the Software, including all intellectual and
+    industrial property rights. The Licensee receives only the rights that this
+    Agreement expressly grants. "kubelatch" and its logo are trademarks of the
+    Licensor.
+
+(b) If the Licensee gives the Licensor suggestions, ideas or other feedback
+    about the Software, the Licensor may use them freely, without any
+    obligation to the Licensee. The Licensee is not obliged to give feedback.
+
+
+7. Third-party components
+-------------------------
+
+The Software includes open-source components under their own licenses, which
+are listed in the documentation at https://docs.kubelatch.com. Those licenses
+govern those components, and nothing in this Agreement limits the rights that
+they grant.
+
+
+8. Updates and support
+----------------------
+
+(a) The Licensor may make updates of the Software available. Each update is
+    governed by this Agreement, or by the version of this Agreement that
+    accompanies it. The Licensor has no obligation to release updates, and
+    supports only the latest release of the Software.
+
+(b) The Free edition comes with community support, without any commitment of
+    response. The Pro edition comes with the support described at
+    https://kubelatch.com/pricing/.
+
+
+9. Warranty disclaimer
+----------------------
+
+To the maximum extent that applicable law allows, the Software is provided "as
+is" and "as available", without any warranty of any kind, express or implied,
+including warranties of merchantability, fitness for a particular purpose and
+non-infringement, and without any warranty that the Software will be free of
+errors or work without interruption. The Licensee is responsible for how it
+configures the Software, for the permissions it grants through it, and for the
+backups of its own data.
+
+
+10. Limitation of liability
+---------------------------
+
+(a) To the maximum extent that applicable law allows, the Licensor is not
+    liable for any indirect, incidental, special or consequential damages, or
+    for any loss of profits, revenue, business, goodwill or data, arising out
+    of or in connection with this Agreement or the Software.
+
+(b) To the maximum extent that applicable law allows, the Licensor's total
+    liability arising out of or in connection with this Agreement or the
+    Software is limited to the fees that the Licensee paid to the Licensor for
+    the Software in the 12 months before the event that gave rise to the claim.
+
+(c) Nothing in this Agreement limits or excludes liability for wilful
+    misconduct or gross negligence, for death or personal injury, or any other
+    liability that cannot be limited or excluded under Spanish law.
+
+
+11. Term and termination
+------------------------
+
+(a) This Agreement takes effect when the Licensee accepts it, and continues
+    until it is terminated.
+
+(b) The license for the Pro edition ends when the License Key expires and its
+    grace period, if any, has passed. The Licensee may then continue to use the
+    Free edition under this Agreement.
+
+(c) If the Licensee breaches this Agreement, the license for the Pro edition
+    terminates: at once for a breach of section 3, and otherwise if the
+    Licensee does not remedy the breach within 30 days after the Licensor's
+    written notice. On termination, the Licensee shall stop using the Pro
+    edition and remove its License Keys. It may continue to use the Free
+    edition under this Agreement, provided that it complies with sections 2(b)
+    and 3; if it does not, the license for the Free edition terminates too, and
+    the Licensee shall stop using the Software and delete its copies.
+
+(d) Termination entitles the Licensee to no refund, except as the Pro
+    Subscription Terms provide. Sections 6, 9, 10, 12 and 13 survive
+    termination.
+
+
+12. Data
+--------
+
+(a) The Software sends no data to the Licensor. The data that the Software
+    processes, including the identities, permissions and audit records of the
+    Licensee's people, stays in the Licensee's own infrastructure and database.
+    The Licensee is the controller of that data, and the Licensor has no access
+    to it.
+
+(b) If the Licensee sends data to the Licensor to obtain support, the Licensor
+    uses it only to provide that support.
+
+(c) Billing data is handled by Stripe on the Licensor's behalf, as the privacy
+    policy at https://kubelatch.com/privacy/ describes.
+
+
+13. Governing law, venue and general provisions
+-----------------------------------------------
+
+(a) This Agreement is governed by the laws of Spain, excluding their
+    conflict-of-law rules and the United Nations Convention on Contracts for
+    the International Sale of Goods.
+
+(b) Any dispute arising out of or in connection with this Agreement is
+    submitted to the courts of the Licensor's registered office, and the
+    parties waive any other jurisdiction that might apply to them, to the
+    extent that the law allows it.
+
+(c) This Agreement, together with the Pro Subscription Terms where they apply,
+    is the entire agreement between the parties on its subject, and supersedes
+    any prior agreement on it. Terms in a purchase order or other document of
+    the Licensee do not apply unless the Licensor accepts them in writing.
+
+(d) If a provision of this Agreement is held invalid or unenforceable, the rest
+    of it remains in force, and that provision is replaced by a valid one that
+    comes as close as possible to its purpose.
+
+(e) The Licensee may not assign or transfer this Agreement without the
+    Licensor's prior written consent. The Licensor may assign it to a successor
+    in its business.
+
+(f) The Licensor may publish new versions of this Agreement. A new version
+    applies to the updates of the Software released with it; the version that
+    accompanies the release that the Licensee runs governs that release.
+
+(g) A failure or delay in enforcing a provision is not a waiver of it.
+
+
+14. Contact
+-----------
+
+Questions about this Agreement, notices to the Licensor and requests under it
+go to pro@kubelatch.com.
