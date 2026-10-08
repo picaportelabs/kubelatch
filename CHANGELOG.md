@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.27.0](https://github.com/picaportelabs/kubelatch/compare/v0.26.0...v0.27.0) (2026-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **edition:** an instance that never had a license key keeps its audit 24 hours instead of 7 days; about a minute after the first start of this version the retention job deletes the older audit. Set KUBELATCH_LICENSE before upgrading, or install a key in Edition right after, to keep it. Nothing that exists is cut: an instance already past 2 clusters or 5 people keeps them and only new registrations are refused.
+
+### Features
+
+* **edition:** Free allows 2 clusters, 5 people and 24 hours of audit ([e53bfdc](https://github.com/picaportelabs/kubelatch/commit/e53bfdcec020accbd6ac07ee5dfc44aa5ff9f114))
+* **landing:** pricing, the Pro pages, the key resend form, navigation and footer in both languages ([8155a73](https://github.com/picaportelabs/kubelatch/commit/8155a7347aa8278d2d2a24c8da2cd4aa0aa0308f))
+* **landing:** re-root the landing as its own repository (Dockerfile, Makefile, README, CI) ([6abfb7c](https://github.com/picaportelabs/kubelatch/commit/6abfb7c5086c8b41b13ee08acfb2969df5e45603))
+* **legal:** EULA as LICENSE and the terms, privacy and security pages in both languages ([7b8eca9](https://github.com/picaportelabs/kubelatch/commit/7b8eca9bab4b62bc9931205d5bb8b8c5f667a16c))
+* **license:** seed helpers and an exported CurrentKID for the licensing service ([a2f6895](https://github.com/picaportelabs/kubelatch/commit/a2f68957f299dc9b6679c95ba8998acd6a6734e6))
+* **licensing:** claims from a subscription, the signer, keygen and issue ([98a10ae](https://github.com/picaportelabs/kubelatch/commit/98a10ae6eb3eab61a28a5d1be2d429abb2ec9216))
+* **licensing:** distroless image, operator README and a local Pro through make dev-tls-pro ([051d78b](https://github.com/picaportelabs/kubelatch/commit/051d78b17a681bd956c0210b3b63c21380743074))
+* **licensing:** key and end-of-subscription e-mails in English and Spanish through Resend ([6a12054](https://github.com/picaportelabs/kubelatch/commit/6a120546562a96cbe0a1ba53bbe754599ea1ccf7))
+* **licensing:** Stripe webhook signature, event envelope and REST client ([01136ca](https://github.com/picaportelabs/kubelatch/commit/01136ca1d055b07581ac6dcb6baaed53a57085d9))
+* **licensing:** the service: Stripe webhook, key resend, healthz and serve ([ee48289](https://github.com/picaportelabs/kubelatch/commit/ee48289ce31107462332d234da7a7b45a54c840f))
+* **public:** the public repository tree and deploy/public/sync.sh ([8d8fb10](https://github.com/picaportelabs/kubelatch/commit/8d8fb10f90895523861bc100b250a9f7f357972e))
+* **release:** publish-public mirrors each release to picaportelabs/kubelatch; fixed image source ([6eaf44a](https://github.com/picaportelabs/kubelatch/commit/6eaf44a784414dcf8fa92efc3e4914d936780051))
+* **release:** the EULA ships in the image and the chart ([40f1311](https://github.com/picaportelabs/kubelatch/commit/40f1311d5dfeded696fc99706cc47b6552a23bdd))
+* **web:** the sidebar says the edition beside the name ([59b9cec](https://github.com/picaportelabs/kubelatch/commit/59b9cecff673af389d8b5a2adca697cdd68634e0))
+
+
+### Bug Fixes
+
+* **helm:** refresh the chart's EULA copy after the legal fixes ([58c5f8b](https://github.com/picaportelabs/kubelatch/commit/58c5f8b755c986cecd1f4a360205e1bd0c365a29))
+* **landing:** let the key form follow its redirect back, 404 for /pro/, and stricter form and Stripe checks ([17e8307](https://github.com/picaportelabs/kubelatch/commit/17e830779c41d9e4a40152f7cbb37833e4d1e83c))
+* **landing:** privacy names the key-request logs, the FAQ grace is for paid keys; tighter concurrency note and workflow test ([70a03cc](https://github.com/picaportelabs/kubelatch/commit/70a03cc929c030d1a76990006899f83cfb7fb923))
+* **landing:** split the pricing FAQ on expiry and seats, name every licensing log field, fix the packages sentence and the closing checklist order ([98867da](https://github.com/picaportelabs/kubelatch/commit/98867da7e97e102acd8dc7a1c0852a589412ca3f))
+* **legal:** bind trial users to the Pro Subscription Terms in EULA section 5 ([d01e84d](https://github.com/picaportelabs/kubelatch/commit/d01e84d49fac982c904d665440b0ce122a9aa221))
+* **legal:** Free limits per Instance, Pro Seats across Instances, trial customers and (a) clause markers ([fe02836](https://github.com/picaportelabs/kubelatch/commit/fe0283616866574e896e381aea4d22d9e8d41a71))
+* **licensing:** judge the status before the customer, cap --days, refuse empty Stripe ids, keep e-mails out of transport errors, tolerant locale match, IPv6 /64 limiter keys ([061b2b8](https://github.com/picaportelabs/kubelatch/commit/061b2b8752b3754e7dd3a2cfa29de1662ea76334))
+* **licensing:** look resend addresses up as typed, then lowercase; trust the last X-Forwarded-For line ([0275cf8](https://github.com/picaportelabs/kubelatch/commit/0275cf8492b8fe430e30a0acaf672a56a85d36bd))
+* **licensing:** paid keys only from paid events, trial-end updates only, price check, unpaid checkouts, per-address resend cap, event-dated keys ([698cbf6](https://github.com/picaportelabs/kubelatch/commit/698cbf6134e28dc3bf6194853372c0f0f30c1e28))
+* **release:** pass PUBLIC_REPO_TOKEN through workflow_call, sync the public tree for the latest release only and one at a time, mirror the root files with deletion, point the public changelog at the public repository ([e569ce1](https://github.com/picaportelabs/kubelatch/commit/e569ce1ab8e399f2f0ed845fd223d158ddafdbd8))
+
 ## [0.26.0](https://github.com/picaportelabs/kubelatch/compare/v0.25.0...v0.26.0) (2026-10-08)
 
 
