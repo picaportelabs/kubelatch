@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://github.com/picaportelabs/kubelatch/compare/v0.27.0...v0.27.1) (2026-10-08)
+
+
+### Bug Fixes
+
+* **release:** read the release notes with GITHUB_TOKEN so the public mirror carries them ([d9dfab6](https://github.com/picaportelabs/kubelatch/commit/d9dfab62c30c445e08afad28cf9114a4ca8e11a7))
+
 ## [0.27.0](https://github.com/picaportelabs/kubelatch/compare/v0.26.0...v0.27.0) (2026-10-08)
 
 
