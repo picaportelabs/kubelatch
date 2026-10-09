@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.30.0](https://github.com/picaportelabs/kubelatch/compare/v0.29.0...v0.30.0) (2026-10-09)
+
+
+### Features
+
+* **rbac:** a module names the read capability a write one presumes (reads) ([72d5d6e](https://github.com/picaportelabs/kubelatch/commit/72d5d6e81cf71a5294e3119c00ad8f4a0f7615d7))
+* **rbac:** each violation names the field it points at ([7539455](https://github.com/picaportelabs/kubelatch/commit/75394556ed15a443fa2a221477c9526770d33f0b))
+* **rbac:** the preview runs the in-use checks of an edit and reports scope changes in its diff ([e736667](https://github.com/picaportelabs/kubelatch/commit/e736667851c619adb8d04e7c10bea40db298d523))
+* **web:** a role page at /admin/roles/{id} with its actions, figures and what it grants ([c0e81d4](https://github.com/picaportelabs/kubelatch/commit/c0e81d475857184d7a8daff43ccf4e59769b3bc0))
+* **web:** CapabilityGrid, the capability cards by domain with folds and the write-without-read advice ([5175374](https://github.com/picaportelabs/kubelatch/commit/5175374d55dc193ebe87f0638621a012451b37f0))
+* **web:** helpers, texts and test viewport for the role builder redesign ([0130973](https://github.com/picaportelabs/kubelatch/commit/013097388c45fc6a81c64ffe47a0cfe0637d7334))
+* **web:** MultiSelect takes free text as chips (creatable) ([29a83c4](https://github.com/picaportelabs/kubelatch/commit/29a83c42c6b9818dae4aa8f5c0896b8049066149))
+* **web:** RuleEditor with a group combobox, chips, verb presets and suggestions from a cluster ([9a6e01b](https://github.com/picaportelabs/kubelatch/commit/9a6e01b5956ce289ed4371f52edc7507928b565f))
+* **web:** ScopeChoice, the where-it-applies card of the role builder ([ff58e20](https://github.com/picaportelabs/kubelatch/commit/ff58e2029b05646307f47c4513c74de2b86a55d8))
+* **web:** the role builder edits advanced rules with chips and suggestions; the API explorer is retired ([fd46dff](https://github.com/picaportelabs/kubelatch/commit/fd46dff424d2604f13a5f584a629d3d28596de5f))
+* **web:** the role builder in the order of the decisions, with folds, a status line and a phone bar ([211f352](https://github.com/picaportelabs/kubelatch/commit/211f35292d8ef1dcee6eb18324fe5dd4aa23f504))
+* **web:** the role summary leads with problems and what it grants, folds the resources, and lists scope changes ([c146409](https://github.com/picaportelabs/kubelatch/commit/c1464097e9502a6861afe6cf9d4f57f19593f4f7))
+* **web:** ToggleChip and the Start from chips of the role builder ([a4e7545](https://github.com/picaportelabs/kubelatch/commit/a4e7545057490be6820beb8073a6fecee3be2d09))
+* **web:** useMediaQuery and the phone summary bar of the role builder ([ee810e6](https://github.com/picaportelabs/kubelatch/commit/ee810e6ce50dd877ff766f063c9c41b6974ef70d))
+
+
+### Bug Fixes
+
+* **web:** a late "start from" answer never replaces an edited draft ([44bc225](https://github.com/picaportelabs/kubelatch/commit/44bc225eadb180e96782fc0c501c4eb0bcc4e18a))
+* **web:** a rule added after "start from" gets a fresh key, and the summary sheet closes when the screen turns wide ([deb8a9e](https://github.com/picaportelabs/kubelatch/commit/deb8a9ea5c0f2b8771756a30797326422a2e561f))
+* **web:** multi-group rules are merged back on save ([4145909](https://github.com/picaportelabs/kubelatch/commit/41459092eeda1b4819bac2027888c15a95345efd))
+* **web:** the role builder's problem links always land, and a late start no longer wins ([fb16125](https://github.com/picaportelabs/kubelatch/commit/fb161253ec516f85e5cbc797ab8dae7d034c6444))
+* **web:** the summary sheet's problem links close the sheet and focus their control ([d5d4937](https://github.com/picaportelabs/kubelatch/commit/d5d4937b2eebb73aba5e75e164e683d4ccdf1b97))
+
 ## [0.29.0](https://github.com/picaportelabs/kubelatch/compare/v0.28.0...v0.29.0) (2026-10-09)
 
 
