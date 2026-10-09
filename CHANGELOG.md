@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.29.0](https://github.com/picaportelabs/kubelatch/compare/v0.28.0...v0.29.0) (2026-10-09)
+
+
+### Features
+
+* **groups:** extend a group permission (PATCH /api/groups/{id}/grants/{gid}) from the group page, with its derived rows and audit event ([af04764](https://github.com/picaportelabs/kubelatch/commit/af04764e0230d3f99ff03bd6a05bf214f12df55a))
+* **web:** Access column and Add to a group in Users, the origin on Home, a Permissions link per cluster ([6b3475c](https://github.com/picaportelabs/kubelatch/commit/6b3475c7ee26aa599cc0aa42c2c523071f310407))
+* **web:** audit log labels for the group actions and the grant expiry change ([c17f24f](https://github.com/picaportelabs/kubelatch/commit/c17f24f3166a840dee5fa58d405a163ad76b1a8c))
+* **web:** grant several accounts and scopes in one batch ([6ce81df](https://github.com/picaportelabs/kubelatch/commit/6ce81dfb39378dd354d155fd7f5c07cdc02e832e))
+* **web:** group helpers, fixtures, dictionaries and the Groups nav item ([f529cd8](https://github.com/picaportelabs/kubelatch/commit/f529cd8798de59bc5ed57d89f997332b80e519c3))
+* **web:** MultiSelect with chips, a shared ExpiryField and the origin pill ([e28b024](https://github.com/picaportelabs/kubelatch/commit/e28b02409a42ead16aef1553c650b295cb43df49))
+* **web:** permissions by account, by cluster and as a list, with their origin ([2481f84](https://github.com/picaportelabs/kubelatch/commit/2481f84fbd0b4a448ac4b0d6b3c232cef5b8b32a))
+* **web:** the group page with its members, permissions and details ([8580e2c](https://github.com/picaportelabs/kubelatch/commit/8580e2c6870ae8daeec0e6e346f77c3180059426))
+* **web:** the Groups page, its creation sheet, delete confirmation and palette entries ([d06fac6](https://github.com/picaportelabs/kubelatch/commit/d06fac6b35f7e8118b9cd3efe384fca40b3519ca))
+
+
+### Bug Fixes
+
+* **web:** arrow keys on the permissions view selector, and Add to a group waits for the memberships before offering groups ([c175b92](https://github.com/picaportelabs/kubelatch/commit/c175b92b0f7d2fee380a0a38f116b17d58092c0d))
+* **web:** drop the refused-entry line when the batch changes and tidy the grant form ([0f8c830](https://github.com/picaportelabs/kubelatch/commit/0f8c830323daab17bd6f26e28b2e4d6992dab8b9))
+* **web:** group page findings of the milestone 3 review (blocked members, extend guard, limits, pending states) ([bd2e5a7](https://github.com/picaportelabs/kubelatch/commit/bd2e5a7e0c007f7c3909b32f814c8b4534878ebc))
+* **web:** one copy of the group dictionary blocks, a 24 px chip target and the tinted hover of the group pill ([931350e](https://github.com/picaportelabs/kubelatch/commit/931350eceb9e3d82f9cd046c291be19bc6d62457))
+* **web:** permissions overlap over the unfiltered set, guard-clean texts, detail and header coverage ([a30d385](https://github.com/picaportelabs/kubelatch/commit/a30d385514f5415fd44fb8fd700d8cd162578ff1))
+* **web:** permissions page findings of the milestone 3 review (header a11y, stale refusal, overlaps under a group filter, chip focus) ([461569c](https://github.com/picaportelabs/kubelatch/commit/461569c43b8d4f01117d0940c0fc2f3f6a139010))
+* **web:** quote logins and names with «» in the Spanish group texts, and cover every overlap rule ([af9f91d](https://github.com/picaportelabs/kubelatch/commit/af9f91de69a2daa28c61fd06af1895faeaa826e1))
+* **web:** refresh after a late add-to-group response, restore focus to the row menu, grants mock with a source ([6533537](https://github.com/picaportelabs/kubelatch/commit/6533537cb647e3cfdb86c6bfec50ccacc86685ed))
+* **web:** refresh from the mutation hooks and restore focus on the group page ([94e058c](https://github.com/picaportelabs/kubelatch/commit/94e058c7d5281b6219eb99602981fa383d0ebc61))
+
 ## [0.28.0](https://github.com/picaportelabs/kubelatch/compare/v0.27.1...v0.28.0) (2026-10-09)
 
 
