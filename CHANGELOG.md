@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.28.0](https://github.com/picaportelabs/kubelatch/compare/v0.27.1...v0.28.0) (2026-10-09)
+
+
+### Features
+
+* **api:** /api/groups, members and group permissions ([e8d5569](https://github.com/picaportelabs/kubelatch/commit/e8d5569afe58ec88133b391f41e0d347679ee4bb))
+* **api:** grant source and group filter, derived grants revoke from their group, grant batches, tier covers, subject access counts ([e6f6ab6](https://github.com/picaportelabs/kubelatch/commit/e6f6ab679340a0570aaecbc95d7f9adabbeead2e))
+* **groups:** agents ceiling regression, SPA API types and reference docs ([18728e6](https://github.com/picaportelabs/kubelatch/commit/18728e63c17f6a70729e15f8b0eca83ee2e7992d))
+* **groups:** the group service, with derived grants synchronised in each transaction ([10681d8](https://github.com/picaportelabs/kubelatch/commit/10681d87310b5eeca1de07d8fd2da283c4bd5bc9))
+* **rbac:** tier covers, and deleting or narrowing a role sees its group permissions ([f8bddf7](https://github.com/picaportelabs/kubelatch/commit/f8bddf73e1a9f8c039dbdbaeea05c83e2880f1ea))
+* **rbac:** ValidateTarget shared by direct grants and group permissions, and CreateBatch ([7a564c3](https://github.com/picaportelabs/kubelatch/commit/7a564c32325bf8390f5aaf325895e2138663aec2))
+* **store:** group reads, counts and the derived grant synchronisation ([bd0bcc6](https://github.com/picaportelabs/kubelatch/commit/bd0bcc669944a83c114d95e16b0fed2323db7937))
+* **store:** groups, members, group grants and the origin of a derived grant ([f3538a5](https://github.com/picaportelabs/kubelatch/commit/f3538a5979de93e9378c09d9b3d07df18a5dec7a))
+
+
+### Bug Fixes
+
+* **api:** name the batch index on every grant failure ([6128e7a](https://github.com/picaportelabs/kubelatch/commit/6128e7a31caad953e426fb45449058d0241986af))
+* **groups:** prove the group lock with a removal race, event order in Delete, narrower reconcile on expiry updates ([d7b0c7a](https://github.com/picaportelabs/kubelatch/commit/d7b0c7a7669c3f9b4112c2805c21b4071728b902))
+* **groups:** validate on the pool before locking, and re-validate permissions for new and revived members ([f48eaed](https://github.com/picaportelabs/kubelatch/commit/f48eaed94de4594dc4a9393ff18757ae2672d574))
+* **rbac:** lock a deleted role's groups before revoking their permissions ([31e1b11](https://github.com/picaportelabs/kubelatch/commit/31e1b110ce981883ecd2f6c44692f3cd28715a8a))
+* **rbac:** validate a grant batch before opening its transaction ([ee85c1d](https://github.com/picaportelabs/kubelatch/commit/ee85c1ddc9e0931a159f05c10792526f99f472a9))
+* **store:** give the group advisory lock its own class, 12 ([575081c](https://github.com/picaportelabs/kubelatch/commit/575081c5f98322c5531aab0da72ac22101b957f5))
+* **store:** groups down migration with agent grants, and tests for the sync revoke paths ([a4a859d](https://github.com/picaportelabs/kubelatch/commit/a4a859d60f2d457d669facc35edab04504005803))
+* **store:** pair a derived grant only within one group ([28a172e](https://github.com/picaportelabs/kubelatch/commit/28a172e668cd4390861d45232afdf13ff044c8dd))
+
 ## [0.27.1](https://github.com/picaportelabs/kubelatch/compare/v0.27.0...v0.27.1) (2026-10-08)
 
 
