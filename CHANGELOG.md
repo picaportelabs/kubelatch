@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.2](https://github.com/picaportelabs/kubelatch/compare/v0.31.1...v0.31.2) (2026-10-10)
+
+
+### Bug Fixes
+
+* **updatecheck:** check within 30 s of starting and retry a failed check after an hour ([068d6c0](https://github.com/picaportelabs/kubelatch/commit/068d6c097c608d2de6519f6ffc9f28766497a4f8))
+
 ## [0.31.1](https://github.com/picaportelabs/kubelatch/compare/v0.31.0...v0.31.1) (2026-10-10)
 
 
