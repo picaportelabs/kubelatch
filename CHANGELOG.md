@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.1](https://github.com/picaportelabs/kubelatch/compare/v0.32.0...v0.32.1) (2026-10-10)
+
+
+### Bug Fixes
+
+* **web:** Home's connection card takes the full width, compact, with the command beside its copy button ([89c787c](https://github.com/picaportelabs/kubelatch/commit/89c787c6e290d9c213a3145863acea2f3c6388db))
+
 ## [0.32.0](https://github.com/picaportelabs/kubelatch/compare/v0.31.2...v0.32.0) (2026-10-10)
 
 
