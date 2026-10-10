@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.32.0](https://github.com/picaportelabs/kubelatch/compare/v0.31.2...v0.32.0) (2026-10-10)
+
+
+### Features
+
+* **api:** grant rows carry their cluster's name, so a member's Home can name the clusters it lists ([4344f68](https://github.com/picaportelabs/kubelatch/commit/4344f68ced87a6b7890c2076be2344d06663b70a))
+* **web:** an access directory grouped by cluster, on the grouped table without folding ([f10a3de](https://github.com/picaportelabs/kubelatch/commit/f10a3de12dcb9397d3ee07552891be5936dcc646))
+* **web:** Edition lists the installation's health, each check with its state and where to fix it ([8f20871](https://github.com/picaportelabs/kubelatch/commit/8f20871b4e17fd95914a5484b0210dba736f4f74))
+* **web:** Home leads with what needs attention, names the connection in its header and lists access as a directory by cluster ([68f21c5](https://github.com/picaportelabs/kubelatch/commit/68f21c57b21fda9d999d8b137ac2fbaac79e93ce))
+* **web:** Home's attention items and access directory as pure helpers ([f7d614f](https://github.com/picaportelabs/kubelatch/commit/f7d614fc903e9232bd02af28f4291d4c2369cb96))
+
+
+### Bug Fixes
+
+* **web:** Needs attention drops a credential already reissued with the same name and cluster ([3795328](https://github.com/picaportelabs/kubelatch/commit/3795328797148c38244f02561944345e7d8d5526))
+* **web:** the health list words a failed GitHub sync by its cause, as Users does ([7e38ae8](https://github.com/picaportelabs/kubelatch/commit/7e38ae82576d376bfd036e69894d2a24111a6078))
+* **web:** the issue sheet opened from the command palette gives focus back to Home's issue button ([2ec92fc](https://github.com/picaportelabs/kubelatch/commit/2ec92fc77e003fcb7442a9cc95f4992beb98e812))
+
 ## [0.31.2](https://github.com/picaportelabs/kubelatch/compare/v0.31.1...v0.31.2) (2026-10-10)
 
 
