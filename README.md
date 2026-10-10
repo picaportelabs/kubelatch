@@ -18,7 +18,7 @@ flowchart LR
 **Editions.** kubelatch is free for a small team: 2 clusters, 5 people and 24 hours of audit. Pro lifts those limits with a license key verified offline, priced per person at [kubelatch.com/pricing](https://kubelatch.com/pricing/), with a 30-day trial. See [Editions and license](https://docs.kubelatch.com/operate/editions/). What we commit to:
 
 - What is in Free stays in Free; its limits only ever loosen.
-- No telemetry: the key is verified offline and kubelatch calls no service of Picaporte Labs. Air-gapped installations work.
+- No telemetry: the key is verified offline. The only call kubelatch makes to Picaporte Labs is the daily version check, which fetches a small JSON document, sends nothing and turns off with KUBELATCH_UPDATE_CHECK=false. Air-gapped installations work.
 - A limit only stops a new registration. Nothing that exists is cut: access through the proxy, grants, credentials, clusters, people and the custom roles already materialized keep working. If a key was ever installed, audit older than 24 hours is kept, not served, until a key is installed.
 - On request, the code can be reviewed under NDA, and we commit to publishing the summary of an external penetration test.
 
