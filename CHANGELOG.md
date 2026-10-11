@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.33.0](https://github.com/picaportelabs/kubelatch/compare/v0.32.1...v0.33.0) (2026-10-11)
+
+
+### Features
+
+* **web:** fold each cluster of My access, as Permissions does ([4e1eade](https://github.com/picaportelabs/kubelatch/commit/4e1eade023db95e90a0169f9f9e528b80966c8af))
+
 ## [0.32.1](https://github.com/picaportelabs/kubelatch/compare/v0.32.0...v0.32.1) (2026-10-10)
 
 
