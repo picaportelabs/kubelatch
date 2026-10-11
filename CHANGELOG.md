@@ -3,15 +3,8 @@
 ## [0.37.0](https://github.com/picaportelabs/kubelatch/compare/v0.36.0...v0.37.0) (2026-10-11)
 
 
-### Features
+No user-facing changes in this release.
 
-* **crm:** Stripe to Twenty sync function, set up in test mode ([61d7a25](https://github.com/picaportelabs/kubelatch/commit/61d7a252366cc19233e553a7e6290de0644669aa))
-* **licensing:** HTML key and end-of-subscription e-mails ([b708a4a](https://github.com/picaportelabs/kubelatch/commit/b708a4a520817f5af8007a8c20328c408c139e39))
-
-
-### Bug Fixes
-
-* **licensing:** no key from an invoice paid during a trial ([aec41ed](https://github.com/picaportelabs/kubelatch/commit/aec41ed7b3e20cd31a224c1f9d1d016b813a7dc1))
 
 ## [0.36.0](https://github.com/picaportelabs/kubelatch/compare/v0.35.0...v0.36.0) (2026-10-11)
 
@@ -383,15 +376,8 @@
 ### Features
 
 * **edition:** Free allows 2 clusters, 5 people and 24 hours of audit ([e53bfdc](https://github.com/picaportelabs/kubelatch/commit/e53bfdcec020accbd6ac07ee5dfc44aa5ff9f114))
-* **landing:** pricing, the Pro pages, the key resend form, navigation and footer in both languages ([8155a73](https://github.com/picaportelabs/kubelatch/commit/8155a7347aa8278d2d2a24c8da2cd4aa0aa0308f))
-* **landing:** re-root the landing as its own repository (Dockerfile, Makefile, README, CI) ([6abfb7c](https://github.com/picaportelabs/kubelatch/commit/6abfb7c5086c8b41b13ee08acfb2969df5e45603))
 * **legal:** EULA as LICENSE and the terms, privacy and security pages in both languages ([7b8eca9](https://github.com/picaportelabs/kubelatch/commit/7b8eca9bab4b62bc9931205d5bb8b8c5f667a16c))
 * **license:** seed helpers and an exported CurrentKID for the licensing service ([a2f6895](https://github.com/picaportelabs/kubelatch/commit/a2f68957f299dc9b6679c95ba8998acd6a6734e6))
-* **licensing:** claims from a subscription, the signer, keygen and issue ([98a10ae](https://github.com/picaportelabs/kubelatch/commit/98a10ae6eb3eab61a28a5d1be2d429abb2ec9216))
-* **licensing:** distroless image, operator README and a local Pro through make dev-tls-pro ([051d78b](https://github.com/picaportelabs/kubelatch/commit/051d78b17a681bd956c0210b3b63c21380743074))
-* **licensing:** key and end-of-subscription e-mails in English and Spanish through Resend ([6a12054](https://github.com/picaportelabs/kubelatch/commit/6a120546562a96cbe0a1ba53bbe754599ea1ccf7))
-* **licensing:** Stripe webhook signature, event envelope and REST client ([01136ca](https://github.com/picaportelabs/kubelatch/commit/01136ca1d055b07581ac6dcb6baaed53a57085d9))
-* **licensing:** the service: Stripe webhook, key resend, healthz and serve ([ee48289](https://github.com/picaportelabs/kubelatch/commit/ee48289ce31107462332d234da7a7b45a54c840f))
 * **public:** the public repository tree and deploy/public/sync.sh ([8d8fb10](https://github.com/picaportelabs/kubelatch/commit/8d8fb10f90895523861bc100b250a9f7f357972e))
 * **release:** publish-public mirrors each release to picaportelabs/kubelatch; fixed image source ([6eaf44a](https://github.com/picaportelabs/kubelatch/commit/6eaf44a784414dcf8fa92efc3e4914d936780051))
 * **release:** the EULA ships in the image and the chart ([40f1311](https://github.com/picaportelabs/kubelatch/commit/40f1311d5dfeded696fc99706cc47b6552a23bdd))
@@ -401,14 +387,8 @@
 ### Bug Fixes
 
 * **helm:** refresh the chart's EULA copy after the legal fixes ([58c5f8b](https://github.com/picaportelabs/kubelatch/commit/58c5f8b755c986cecd1f4a360205e1bd0c365a29))
-* **landing:** let the key form follow its redirect back, 404 for /pro/, and stricter form and Stripe checks ([17e8307](https://github.com/picaportelabs/kubelatch/commit/17e830779c41d9e4a40152f7cbb37833e4d1e83c))
-* **landing:** privacy names the key-request logs, the FAQ grace is for paid keys; tighter concurrency note and workflow test ([70a03cc](https://github.com/picaportelabs/kubelatch/commit/70a03cc929c030d1a76990006899f83cfb7fb923))
-* **landing:** split the pricing FAQ on expiry and seats, name every licensing log field, fix the packages sentence and the closing checklist order ([98867da](https://github.com/picaportelabs/kubelatch/commit/98867da7e97e102acd8dc7a1c0852a589412ca3f))
 * **legal:** bind trial users to the Pro Subscription Terms in EULA section 5 ([d01e84d](https://github.com/picaportelabs/kubelatch/commit/d01e84d49fac982c904d665440b0ce122a9aa221))
 * **legal:** Free limits per Instance, Pro Seats across Instances, trial customers and (a) clause markers ([fe02836](https://github.com/picaportelabs/kubelatch/commit/fe0283616866574e896e381aea4d22d9e8d41a71))
-* **licensing:** judge the status before the customer, cap --days, refuse empty Stripe ids, keep e-mails out of transport errors, tolerant locale match, IPv6 /64 limiter keys ([061b2b8](https://github.com/picaportelabs/kubelatch/commit/061b2b8752b3754e7dd3a2cfa29de1662ea76334))
-* **licensing:** look resend addresses up as typed, then lowercase; trust the last X-Forwarded-For line ([0275cf8](https://github.com/picaportelabs/kubelatch/commit/0275cf8492b8fe430e30a0acaf672a56a85d36bd))
-* **licensing:** paid keys only from paid events, trial-end updates only, price check, unpaid checkouts, per-address resend cap, event-dated keys ([698cbf6](https://github.com/picaportelabs/kubelatch/commit/698cbf6134e28dc3bf6194853372c0f0f30c1e28))
 * **release:** pass PUBLIC_REPO_TOKEN through workflow_call, sync the public tree for the latest release only and one at a time, mirror the root files with deletion, point the public changelog at the public repository ([e569ce1](https://github.com/picaportelabs/kubelatch/commit/e569ce1ab8e399f2f0ed845fd223d158ddafdbd8))
 
 ## [0.26.0](https://github.com/picaportelabs/kubelatch/compare/v0.25.0...v0.26.0) (2026-10-08)
@@ -459,15 +439,8 @@
 ## [0.25.0](https://github.com/picaportelabs/kubelatch/compare/v0.24.0...v0.25.0) (2026-10-06)
 
 
-### Features
+No user-facing changes in this release.
 
-* **landing:** screenshots of the Agents page and the authorization in the agents band ([b056dd7](https://github.com/picaportelabs/kubelatch/commit/b056dd7a7548ea25125df8c390f5f2a5a74ac9e2))
-* **landing:** the proof on /agents/, the story on the home ([e66a84a](https://github.com/picaportelabs/kubelatch/commit/e66a84a924239adad6870d90c9a3b18c485f937c))
-
-
-### Bug Fixes
-
-* **landing:** the agents band as two rows in a zigzag ([97f00e6](https://github.com/picaportelabs/kubelatch/commit/97f00e6bce84e646368f8acb065bdd7be974ead5))
 
 ## [0.24.0](https://github.com/picaportelabs/kubelatch/compare/v0.23.0...v0.24.0) (2026-10-06)
 
@@ -494,12 +467,6 @@
 * **integrations:** a hook that stops direct kubectl, helm and k9s and names the kubelatch tool ([c9adbfc](https://github.com/picaportelabs/kubelatch/commit/c9adbfcbab66c6fa212f7c167dc140f3942a0197))
 * **integrations:** the rules that point an agent at kubelatch's MCP tools, for AGENTS.md and Cursor ([680f147](https://github.com/picaportelabs/kubelatch/commit/680f147ec3692c07c5019a0ccdf877062edf047b))
 * **jobs:** expire and delete closed agent requests with the audit retention ([3081d63](https://github.com/picaportelabs/kubelatch/commit/3081d6357296fe7e35f2d08135bc7940c1a95574))
-* **landing:** a page for AI agents in both languages, its share images, and its smoke checks ([f1d5222](https://github.com/picaportelabs/kubelatch/commit/f1d5222a47bdf8dbfcf677869ded2420a8ee5978))
-* **landing:** agents video as a coding agent's terminal, with the MCP rows visible ([80660fd](https://github.com/picaportelabs/kubelatch/commit/80660fd59e9f390bc40939b35f979b612923f0da))
-* **landing:** AI agents move up, with their video, what the agent sees, the connect line and the three ways ([3e4eae2](https://github.com/picaportelabs/kubelatch/commit/3e4eae2f61587c016549d8782a09d1bc9fb5e9ac))
-* **landing:** the agents video, and render.sh for both landing videos ([10dbe4d](https://github.com/picaportelabs/kubelatch/commit/10dbe4d7e5f4a6111037c73043effd3079a7aba1))
-* **landing:** the home sums up the agents feature; /agents/ holds the detail ([399df16](https://github.com/picaportelabs/kubelatch/commit/399df1625aa3928db39f2b5c8f0d945c26244456))
-* **landing:** the problem opens the home; the agents summary is a dark band after what you get ([2ac52e7](https://github.com/picaportelabs/kubelatch/commit/2ac52e7680f1f847cd21613584ba9f600ba57c66))
 * **mcp:** /mcp endpoint for bots with whoami and list_clusters ([24742b2](https://github.com/picaportelabs/kubelatch/commit/24742b23c9049e38ee92d1eb654ea5d77c893737))
 * **mcp:** apply, delete_resource, scale and rollout_restart through proxy.Do ([e0af051](https://github.com/picaportelabs/kubelatch/commit/e0af0518a0ffdeca58d8a7011c734aa15d142f97))
 * **mcp:** cluster requests through the proxy, discovery and list_api_resources ([0b6c1a5](https://github.com/picaportelabs/kubelatch/commit/0b6c1a5b879b7abd2e549d661829400082c4855a))
@@ -639,9 +606,8 @@
 ## [0.21.0](https://github.com/picaportelabs/kubelatch/compare/v0.20.0...v0.21.0) (2026-10-03)
 
 
-### Features
+No user-facing changes in this release.
 
-* **landing:** the cover video in Spanish on the Spanish page ([7070756](https://github.com/picaportelabs/kubelatch/commit/70707569afbe0f645e2efc363fccdcd3b2302d5e))
 
 ## [0.20.0](https://github.com/picaportelabs/kubelatch/compare/v0.19.1...v0.20.0) (2026-10-03)
 
@@ -792,7 +758,6 @@
 
 ### Features
 
-* **landing:** share images with the agents line, and a link to the AI agents guide ([85e7d8e](https://github.com/xzehiox/kubelatch/commit/85e7d8ef4b339142da3f9300aa431f08dfbc6db0))
 * **web:** «Not you? Sign out» on the CLI sign-in pages, back to the request after signing in ([991f7c8](https://github.com/xzehiox/kubelatch/commit/991f7c8258a2fbf45096665c4a557499130275f5))
 * **web:** a CI rule's creation date in view under its name ([d8e0f81](https://github.com/xzehiox/kubelatch/commit/d8e0f81872ef569311d42cf6934dbb723031bbc1))
 
@@ -805,17 +770,14 @@
 ## [0.12.0](https://github.com/xzehiox/kubelatch/compare/v0.11.0...v0.12.0) (2026-09-30)
 
 
-### Features
+No user-facing changes in this release.
 
-* **landing:** fixed mixed scheme, AI agents section and a new cover video ([ed833be](https://github.com/xzehiox/kubelatch/commit/ed833bec5f113e2b025f703a8a68c8e3fd0605ed))
 
 ## [0.11.0](https://github.com/xzehiox/kubelatch/compare/v0.10.0...v0.11.0) (2026-09-29)
 
 
 ### Features
 
-* **landing:** cover video with the new shell in scenes 4 and 5, in Inter ([45c81be](https://github.com/xzehiox/kubelatch/commit/45c81be36b8dbe347fb7efdf4eb77debe7c07de6))
-* **landing:** Inter self-hosted and the radii, shadows and paper of the new system ([a7d57e5](https://github.com/xzehiox/kubelatch/commit/a7d57e577d18b346c7bd0a17e43300ce6244dc53))
 * **web:** add the sessionless shell (R65) ([4b75e3d](https://github.com/xzehiox/kubelatch/commit/4b75e3deb943883e57e09a7795f8da319b8dc4c7))
 * **web:** draw the session check's network error in the shell (R71) ([1d1a449](https://github.com/xzehiox/kubelatch/commit/1d1a449f8eea1db769e3ad94e9570c351f491070))
 * **web:** move Login to the sessionless shell (R66, R68 to R70) ([ce454a5](https://github.com/xzehiox/kubelatch/commit/ce454a5228e9aab2de57d1a0dc90849d4b53b82b))
@@ -831,10 +793,6 @@
 * **web:** keep the account link's language choice in the browser, out of the open session's account (R73) ([684b0f6](https://github.com/xzehiox/kubelatch/commit/684b0f6602e03a749a8ad7444cf0c1831d80c16d))
 * **web:** say «caducidad» in the two grant expiry errors and read the account cell without a class (R79) ([9c5777b](https://github.com/xzehiox/kubelatch/commit/9c5777bc35e6645b321d7ad2f1ffe527e7a68991))
 
-
-### Reverts
-
-* **landing:** bring back the previous cover video, simplified and dark ([422e87b](https://github.com/xzehiox/kubelatch/commit/422e87b7f85105515ba7ffb6415b7b11fa6a17a9))
 
 ## [0.10.0](https://github.com/xzehiox/kubelatch/compare/v0.9.0...v0.10.0) (2026-09-29)
 
@@ -946,9 +904,8 @@
 ## [0.6.0](https://github.com/xzehiox/kubelatch/compare/v0.5.0...v0.6.0) (2026-09-28)
 
 
-### Features
+No user-facing changes in this release.
 
-* **landing:** the video carries the cobalt accent on the key, the sign-in button and the revoke ([f076c12](https://github.com/xzehiox/kubelatch/commit/f076c1209f047ade325069a6bd8928f4a7da1c8e))
 
 ## [0.5.0](https://github.com/xzehiox/kubelatch/compare/v0.4.0...v0.5.0) (2026-09-28)
 
@@ -1102,7 +1059,6 @@
 * **httpapi:** trust rule admin API and the CI token exchange endpoint ([b1e0eac](https://github.com/xzehiox/kubelatch/commit/b1e0eacb0ec9ce1489c83874164e56db1e874149))
 * **jobs:** hourly GitHub membership sync that disables leavers, all-or-nothing on errors ([675eba0](https://github.com/xzehiox/kubelatch/commit/675eba0a4d60db1c18ddd81eebdb391f09a729bb))
 * **kubeconfig:** embed KUBELATCH_KUBECONFIG_CA as certificate-authority-data ([a49725b](https://github.com/xzehiox/kubelatch/commit/a49725bae623d04484cab74a6f44634688d96b24))
-* **landing:** static EN/ES landing for kubelatch.com with a Hyperframes video, nginx image and smoke test ([8c54c57](https://github.com/xzehiox/kubelatch/commit/8c54c572fb29136d14cdf3378423233afdb0259f))
 * per-account interface language (subjects.locale, locale in GET /api/me, PATCH /api/me/locale with a user.locale event) ([85d1008](https://github.com/xzehiox/kubelatch/commit/85d100817a8866ee4a8989454e5c4edc824b6584))
 * **proxy:** impersonation proxy with header/path policy, audit and two transports ([bc3958a](https://github.com/xzehiox/kubelatch/commit/bc3958a526a0557c038d324432085ea038f3ae89))
 * **proxy:** live stream registry, sweeper and mount in main ([ea14170](https://github.com/xzehiox/kubelatch/commit/ea14170dda02d73b9f7d91f17de3283c37778d61))
@@ -1192,7 +1148,6 @@
 * **httpapi:** reject invalid UTF-8 and NUL bytes in free-text filters ([6f421de](https://github.com/xzehiox/kubelatch/commit/6f421de499e8d67bddf0941e6f44dfadaaa974f8))
 * **jobs:** accurate partial-failure logging, skip mid-pass links, silence shutdown cancellation, break-glass scope note, and test coverage for skip/break-glass/link-race paths ([9674555](https://github.com/xzehiox/kubelatch/commit/9674555c7fed9f38c9c91e0405e55f4e4eb08867))
 * **jobs:** report a retention pass cut short by the lock as partial work, not skipped ([5655ccf](https://github.com/xzehiox/kubelatch/commit/5655ccf524b507c165418de8a7c0a229527920bf))
-* **landing:** 401 audit row without subject and the proxy's revoked reason in the video, cluster instead of tier on credentials, headers and HSTS on /media/, hashed media names, stricter smoke test ([7273365](https://github.com/xzehiox/kubelatch/commit/7273365e89aea58034082adc17f61ec36c510ef4))
 * **proxy:** cut live streams on shutdown and complete their audit rows ([5ca7980](https://github.com/xzehiox/kubelatch/commit/5ca79800785973faeebbbd793df90c6b46cfa38c))
 * **proxy:** forward and audit the cleaned query string ([bf743f7](https://github.com/xzehiox/kubelatch/commit/bf743f7c80d0ef2b9c1c7cfdae5f33c14cc25133))
 * **proxy:** reject malformed cluster ids with 400 before authenticating ([2fc38f6](https://github.com/xzehiox/kubelatch/commit/2fc38f6fe05bc56152377f3c2c06f38ab5a96d63))
