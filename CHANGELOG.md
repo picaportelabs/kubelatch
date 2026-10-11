@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.37.0](https://github.com/picaportelabs/kubelatch/compare/v0.36.0...v0.37.0) (2026-10-11)
+
+
+### Features
+
+* **crm:** Stripe to Twenty sync function, set up in test mode ([61d7a25](https://github.com/picaportelabs/kubelatch/commit/61d7a252366cc19233e553a7e6290de0644669aa))
+* **licensing:** HTML key and end-of-subscription e-mails ([b708a4a](https://github.com/picaportelabs/kubelatch/commit/b708a4a520817f5af8007a8c20328c408c139e39))
+
+
+### Bug Fixes
+
+* **licensing:** no key from an invoice paid during a trial ([aec41ed](https://github.com/picaportelabs/kubelatch/commit/aec41ed7b3e20cd31a224c1f9d1d016b813a7dc1))
+
 ## [0.36.0](https://github.com/picaportelabs/kubelatch/compare/v0.35.0...v0.36.0) (2026-10-11)
 
 
