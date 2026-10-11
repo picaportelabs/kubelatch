@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.36.0](https://github.com/picaportelabs/kubelatch/compare/v0.35.0...v0.36.0) (2026-10-11)
+
+
+### Features
+
+* **api:** delivery=email on invite and reset, mail error codes, features on /api/me, rate limit on link redemption ([a7cf94b](https://github.com/picaportelabs/kubelatch/commit/a7cf94bf3d131d65b393e2dbd7a3457077f44467))
+* **auth:** e-mail delivery of invite and reset links, revoked when the send fails ([bf52ba4](https://github.com/picaportelabs/kubelatch/commit/bf52ba4877232f0ed38df673aed10b5871f12c28))
+* **config:** KUBELATCH_RESEND_API_KEY and KUBELATCH_MAIL_FROM, and mail.from in the chart ([42c64f1](https://github.com/picaportelabs/kubelatch/commit/42c64f1a38cba6cf7e693dac8be709219a63456c))
+* **edition:** per-feature gating with email_links as the first Pro feature ([5173328](https://github.com/picaportelabs/kubelatch/commit/51733283cf82af72eb3a1158cda079a5d9e117cc))
+* **mail:** invite and reset e-mail (template B) in en and es, logo inline ([e87c120](https://github.com/picaportelabs/kubelatch/commit/e87c12035944a28d7e0d608c8f4cbd0fbaa543b6))
+* **mail:** stdlib Resend client with inline images and a fixed endpoint ([1a952e5](https://github.com/picaportelabs/kubelatch/commit/1a952e5a29ef4f2f909bdf7ec82cf91359e835ea))
+* **server:** wire Resend link e-mails when configured ([23470a6](https://github.com/picaportelabs/kubelatch/commit/23470a6f8d552382038424e7e72560c8b6f377fc))
+* **store:** account link delivery, single-link revoke and control event counts ([fd29b20](https://github.com/picaportelabs/kubelatch/commit/fd29b2067bef357d706b1b3f9b72dcfe40adc9e1))
+* **web:** choose e-mail or link for invitations and resets ([ca086da](https://github.com/picaportelabs/kubelatch/commit/ca086da94e9617d7aefe8200711e8f8ac99e10dd))
+
+
+### Bug Fixes
+
+* **auth:** count the hourly e-mail limits inside the issuing transaction ([7e84e0a](https://github.com/picaportelabs/kubelatch/commit/7e84e0a38bae2f12a9c7e18ceda7e5aaef33a2a2))
+* **auth:** issue and send an e-mailed link detached from the request ([654c6ce](https://github.com/picaportelabs/kubelatch/commit/654c6cef9921c6c1d40677d01138c9a78c9b5bc0))
+* **httpapi:** an empty chunked reset-link body is the default, not a 400 ([3f9d76d](https://github.com/picaportelabs/kubelatch/commit/3f9d76db5d9c0704b0790241fa3be77089581056))
+* **httpapi:** say when Resend did not answer and when a reset closed sessions ([172f06b](https://github.com/picaportelabs/kubelatch/commit/172f06bcf9ff1efbffcba8ef19abe55978f481f5))
+* **mail:** the footer names the configured base URL ([00b36cf](https://github.com/picaportelabs/kubelatch/commit/00b36cf1192a832da754be3b9ddeb5f106c8b217))
+* **web:** describe the create sheet as a single-use invitation, which may never be shown ([f6e286c](https://github.com/picaportelabs/kubelatch/commit/f6e286c3403a08d7fa24dbf0ee4feca029b94670))
+* **web:** Spanish text of subject.bad_delivery says correo, not email ([e811b69](https://github.com/picaportelabs/kubelatch/commit/e811b69415fa4834445a745660c637ae263df921))
+
 ## [0.35.0](https://github.com/picaportelabs/kubelatch/compare/v0.34.1...v0.35.0) (2026-10-11)
 
 
