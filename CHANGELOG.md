@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.35.0](https://github.com/picaportelabs/kubelatch/compare/v0.34.1...v0.35.0) (2026-10-11)
+
+
+### Features
+
+* **agents:** a repeated held write returns its pending request, the retry waits for the decision, and an executed approval says so ([32930a3](https://github.com/picaportelabs/kubelatch/commit/32930a39e559c6f9b0cd5f3776503ecc67cf1ce1))
+* **config:** KUBELATCH_AGENT_APPROVAL_WAIT, how long a held write's retry waits for the decision ([bd9a9f1](https://github.com/picaportelabs/kubelatch/commit/bd9a9f1590146569bf033c27d9c6cb18e3ae7461))
+* **helm:** config.agentApprovalWait sets how long an agent's call waits for a held write's decision ([2eb0b3d](https://github.com/picaportelabs/kubelatch/commit/2eb0b3d9f18dd59cd37e204bdbca87ce055fd278))
+* **httpapi:** follow in the consent answer and the session views, source on each consent grant ([90bfccd](https://github.com/picaportelabs/kubelatch/commit/90bfccddcfc154267093c3d4f6f6ee36a29ccbd4))
+* **mcp:** approvals over multi round-trip requests, a retry that waits for the decision, and one tool list for every caller ([152a947](https://github.com/picaportelabs/kubelatch/commit/152a947f6184ba0b14693cccdcea5bfe31893bad))
+* **oauth:** the consent chooses what the session takes of later grants (follow) ([32ffbbe](https://github.com/picaportelabs/kubelatch/commit/32ffbbeb731f8fa8d97190b682725bf7aeca0e0a))
+* **rbac:** sessions that follow their person derive from each grant they receive ([5842939](https://github.com/picaportelabs/kubelatch/commit/58429390590ac567c1e6117375e39807722fb1ec))
+* **store:** agent_sessions.follow and the live sessions that follow a subject ([3c7d542](https://github.com/picaportelabs/kubelatch/commit/3c7d542e9163ac393382fba8ca14077710089109))
+* **web:** consent merges rows per cluster, scope and role and asks what to do with later permissions ([f27b79a](https://github.com/picaportelabs/kubelatch/commit/f27b79a2e968bbd52a1f9b1049cedb4a65f23bda))
+
+
+### Bug Fixes
+
+* **apierr:** an expired approval no longer says it may have been used, now that a run approval has its own code ([8ca955e](https://github.com/picaportelabs/kubelatch/commit/8ca955e22213fa6ca37f35cf1b1bc2b979961715))
+* **mcp:** a waiting retry answers approval_pending when the server shuts down ([c728a02](https://github.com/picaportelabs/kubelatch/commit/c728a02431a034fda1519b80cb1f60665feb7ffc))
+* **mcp:** cap the retries of one credential that wait for a decision ([bba1c49](https://github.com/picaportelabs/kubelatch/commit/bba1c4905e9115c0fffd56f621fe99f05c1c8759))
+* **rbac:** a following session derives nothing for a permission the person held at the consent ([a6c1f9d](https://github.com/picaportelabs/kubelatch/commit/a6c1f9d306c19caa09338617046dc97b8e0c9901))
+
 ## [0.34.1](https://github.com/picaportelabs/kubelatch/compare/v0.34.0...v0.34.1) (2026-10-11)
 
 
