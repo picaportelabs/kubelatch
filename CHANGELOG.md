@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.34.1](https://github.com/picaportelabs/kubelatch/compare/v0.34.0...v0.34.1) (2026-10-11)
+
+
+### Bug Fixes
+
+* **web:** keep the activity and the credentials current with their page open ([7ff6df4](https://github.com/picaportelabs/kubelatch/commit/7ff6df467151c85be6c9e577a38076ab73cf04b0))
+* **web:** keep the agent pages and the pending count live ([2fc7f1f](https://github.com/picaportelabs/kubelatch/commit/2fc7f1fa52ac8fb0b5e5cfe536c80ee88781114a))
+* **web:** refresh the grants after approving an agent's access request ([1bfa002](https://github.com/picaportelabs/kubelatch/commit/1bfa002eb355aa9b09fcdad8b3805061efcb7ed3))
+
 ## [0.34.0](https://github.com/picaportelabs/kubelatch/compare/v0.33.0...v0.34.0) (2026-10-11)
 
 
