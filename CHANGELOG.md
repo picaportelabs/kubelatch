@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.0](https://github.com/picaportelabs/kubelatch/compare/v0.33.0...v0.34.0) (2026-10-11)
+
+
+### Features
+
+* **edition:** check for a new version now, from the Version row ([3fe74eb](https://github.com/picaportelabs/kubelatch/commit/3fe74eb58e8ebd8dad91ae071bcc0af93628d30b))
+
 ## [0.33.0](https://github.com/picaportelabs/kubelatch/compare/v0.32.1...v0.33.0) (2026-10-11)
 
 
