@@ -37,7 +37,7 @@ The `kubelatch` CLI (browser or device-code sign-in, a kubeconfig with an exec p
 
 ## Pricing
 
-Free for a small team: 2 clusters, 5 people, 24 hours of audit, the six system roles. Pro lifts the limits for 15 € per person per month, billed yearly, with a 30-day trial without a card: [kubelatch.com/pricing](https://kubelatch.com/pricing/).
+Free for a small team: 2 clusters, 5 people, 24 hours of audit, the six system roles. Pro lifts the limits for $15 per person per month, billed yearly, with a 30-day trial without a card: [kubelatch.com/pricing](https://kubelatch.com/pricing/).
 
 ## In this repository
 
