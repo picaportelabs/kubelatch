@@ -1,0 +1,18 @@
+{
+  "description": "Stops direct kubectl, helm and k9s: Kubernetes goes through the kubelatch MCP tools.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/block-direct-kubectl.sh"],
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

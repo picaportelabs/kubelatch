@@ -1,0 +1,48 @@
+# Example values for the kubelatch chart, oci://ghcr.io/picaportelabs/charts/kubelatch,
+# with the default exposure: an L4 LoadBalancer Service, TLS terminated by
+# kubelatch with a cert-manager certificate, and two replicas.
+#
+# Before installing (https://docs.kubelatch.com/operate/install/, steps 1 and 2):
+# the namespace, labelled pod-security.kubernetes.io/enforce=restricted, and
+# the Secret kubelatch-secrets with DATABASE_URL and KUBELATCH_ENCRYPTION_KEY.
+# Then:
+#
+#   helm --kubeconfig "$MGMT_KUBECONFIG" install kubelatch oci://ghcr.io/picaportelabs/charts/kubelatch \
+#     --version "$KUBELATCH_VERSION" -n kubelatch -f values-loadbalancer.yaml
+#
+# Every value, with its default: https://docs.kubelatch.com/reference/helm-values/
+config:
+  baseURL: https://kubelatch.example.com   # the exact public URL, without a trailing slash
+
+# A cert-manager Certificate (ECDSA P-256, 90 days) for the host of
+# config.baseURL. Without cert-manager, leave this out and create the TLS
+# Secret kubelatch-tls yourself (install guide, step 3).
+tls:
+  certManager:
+    enabled: true
+    issuerRef: {name: letsencrypt, kind: ClusterIssuer}
+
+# Two replicas, spread over two nodes; the chart adds a PodDisruptionBudget.
+# The preferred form leaves room for the extra pod of a rollout on a
+# two-node cluster.
+replicas: 2
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          topologyKey: kubernetes.io/hostname
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: kubelatch
+              app.kubernetes.io/instance: kubelatch   # the release name
+
+# The load balancer's settings. GCP and on-prem load balancers need none.
+# On Azure, the longest TCP idle timeout (in minutes):
+#   service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout: "30"
+# On AWS, an NLB:
+#   service.beta.kubernetes.io/aws-load-balancer-type: "external"
+#   service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "instance"
+#   service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+service:
+  annotations: {}

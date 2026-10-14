@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kubelatch": {
+      "type": "http",
+      "url": "${user_config.kubelatch_url}/mcp"
+    }
+  }
+}
