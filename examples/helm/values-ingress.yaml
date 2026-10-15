@@ -1,7 +1,7 @@
 # Example values for the kubelatch chart, oci://ghcr.io/picaportelabs/charts/kubelatch,
 # behind an ingress-nginx Ingress that terminates TLS. The default, an L4
 # LoadBalancer (values-loadbalancer.yaml), suits kubelatch's long watch, logs
-# and exec connections better. The install test doesn't cover the Ingress:
+# and exec connections better. The Ingress is not part of the release tests:
 # validate it on your cluster (https://docs.kubelatch.com/operate/install/#ingress-alternative).
 #
 # Before installing (https://docs.kubelatch.com/operate/install/, steps 1 and 2):

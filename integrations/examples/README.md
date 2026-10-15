@@ -21,4 +21,3 @@ cp -r integrations/examples/skills/incident-triage .claude/skills/
 
 Claude Code loads the skill when a request matches its `description`, so change the triggers to the words your team uses. To make a skill available in every project, copy it to `~/.claude/skills/` instead.
 
-`go test ./integrations/` checks that every kubelatch tool named in backticks in these skills exists in the MCP server.

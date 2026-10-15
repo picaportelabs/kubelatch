@@ -11,4 +11,4 @@ Files that make an AI agent use kubelatch's MCP server instead of reaching the c
 
 The rules advise, and the hook is a guardrail for an agent that means well, not a boundary: it can be bypassed, and it runs only in Claude Code. What bounds an agent is the permissions kubelatch gives it.
 
-The three copies of the rules carry one body; `go test ./integrations/` fails when they drift apart or when the MCP server gains a tool they don't name.
+The three copies of the rules carry the same text.

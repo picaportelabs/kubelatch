@@ -9,7 +9,8 @@
 # Permissions, and add a trust rule in CI with this repository's numeric
 # ids (curl -s https://api.github.com/repos/OWNER/REPO | jq '.owner.id, .id').
 # The runner must reach KUBELATCH_URL over https with a certificate it
-# trusts; the kubeconfig carries no CA (see the README for private CAs).
+# trusts; with a private CA, see
+# https://docs.kubelatch.com/operate/install/#certificates-and-a-private-ca
 name: kubectl via kubelatch
 
 on:
