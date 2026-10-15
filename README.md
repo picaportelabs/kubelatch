@@ -31,7 +31,7 @@ helm --kubeconfig "$MGMT_KUBECONFIG" install kubelatch oci://ghcr.io/picaportela
   --version "$KUBELATCH_VERSION" -n kubelatch -f values.yaml
 ```
 
-The install guide, the values reference and the rest of the manual are at <https://docs.kubelatch.com> (English) and <https://docs.kubelatch.com/es/> (Spanish). To try it on your machine first: [Try it locally](https://docs.kubelatch.com/getting-started/local/), about 15 minutes with a disposable kind cluster.
+The install guide, the values reference and the rest of the manual are at <https://docs.kubelatch.com> (English) and <https://docs.kubelatch.com/es/> (Spanish). To try it on your machine first: [Try it locally](https://docs.kubelatch.com/getting-started/local/), about 15 minutes with Docker Compose ([`examples/quickstart/compose.yaml`](examples/quickstart/compose.yaml)) and a disposable kind cluster.
 
 The `kubelatch` CLI (browser or device-code sign-in, a kubeconfig with an exec plugin) and `kubelatch-server` are attached to each [release](https://github.com/picaportelabs/kubelatch/releases) for Linux and macOS, amd64 and arm64, with a checksums file.
 
@@ -45,6 +45,7 @@ Free for a small team: 2 clusters, 5 people, 24 hours of audit, the six system r
 | --- | --- |
 | [`examples/github-actions/`](examples/github-actions/) | A GitHub Actions workflow that gets a credential through OIDC, no secret stored |
 | [`examples/helm/`](examples/helm/) | Values for the chart: an L4 LoadBalancer with cert-manager and two replicas, and an ingress-nginx Ingress |
+| [`examples/quickstart/`](examples/quickstart/) | A Docker Compose file that runs kubelatch and Postgres on your machine, for the [local tutorial](https://docs.kubelatch.com/getting-started/local/); not for production |
 | [`integrations/`](integrations/) | The Claude Code plugin (`claude plugin marketplace add picaportelabs/kubelatch`), and the same rules for `AGENTS.md`, `CLAUDE.md` and Cursor |
 | [`docs/research/`](docs/research/) | The research behind the design (in Spanish): credentials, RBAC and audit in Kubernetes, the proxy spike, and whether the system roles cover a team's week |
 | [`CHANGELOG.md`](CHANGELOG.md) | What changed in each release; also at [docs.kubelatch.com/releases](https://docs.kubelatch.com/releases/), in English and Spanish |

@@ -1,0 +1,83 @@
+# kubelatch on your machine, for the "Try it locally" tutorial:
+#   https://docs.kubelatch.com/getting-started/local/
+#
+# Three services: Postgres, a one-shot job that writes a self-signed
+# certificate for localhost, and kubelatch on https://localhost:8443.
+# kubelatch joins the "kind" Docker network to reach the API server of a kind
+# cluster by its container name, so create the kind cluster first:
+#   kind create cluster --name kubelatch-tutorial --kubeconfig ./kind.kubeconfig
+#   docker compose up -d
+#
+# For trying kubelatch only: the encryption key is all zeros, the database
+# password is "kubelatch" and the certificate is self-signed. To install
+# kubelatch for real, use the Helm chart:
+#   https://docs.kubelatch.com/operate/install/
+name: kubelatch-tutorial
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: kubelatch
+      POSTGRES_PASSWORD: kubelatch
+      POSTGRES_DB: kubelatch
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kubelatch -d kubelatch"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  # Writes /tls/server.{crt,key} once, valid 30 days for localhost and
+  # 127.0.0.1, readable by kubelatch's user (65532). The postgres image
+  # carries openssl, so nothing else is pulled. Copy the certificate out with
+  #   docker compose cp kubelatch:/tls/server.crt kubelatch-ca.crt
+  tls:
+    image: postgres:17
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        set -e
+        [ -f /tls/server.crt ] && exit 0
+        openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:prime256v1 -nodes \
+          -keyout /tls/server.key -out /tls/server.crt -days 30 -subj /CN=kubelatch-tutorial \
+          -addext subjectAltName=DNS:localhost,IP:127.0.0.1
+        chown 65532:65532 /tls/server.key /tls/server.crt
+    volumes:
+      - tls:/tls
+
+  kubelatch:
+    # KUBELATCH_VERSION picks another release; the tutorial sets it to the
+    # version of the CLI it downloads.
+    image: ghcr.io/picaportelabs/kubelatch:${KUBELATCH_VERSION:-0.40.0}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      tls:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgres://kubelatch:kubelatch@postgres:5432/kubelatch?sslmode=disable
+      KUBELATCH_ENCRYPTION_KEY: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      KUBELATCH_LISTEN: :8443
+      KUBELATCH_BASE_URL: https://localhost:8443
+      KUBELATCH_TLS_CERT: /tls/server.crt
+      KUBELATCH_TLS_KEY: /tls/server.key
+      # Issued kubeconfigs carry this certificate as their CA.
+      KUBELATCH_KUBECONFIG_CA: /tls/server.crt
+    ports:
+      - "127.0.0.1:8443:8443"
+    volumes:
+      - tls:/tls:ro
+    networks:
+      - default
+      - kind
+    restart: unless-stopped
+
+networks:
+  # Created by kind with the first cluster.
+  kind:
+    external: true
+
+volumes:
+  pgdata: {}
+  tls: {}
