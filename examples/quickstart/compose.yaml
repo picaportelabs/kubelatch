@@ -29,11 +29,11 @@ services:
       retries: 30
 
   # Writes /tls/server.{crt,key} once, valid 30 days for localhost and
-  # 127.0.0.1, readable by kubelatch's user (65532). The postgres image
-  # carries openssl, so nothing else is pulled. Copy the certificate out with
+  # 127.0.0.1, owned by kubelatch's user (65532). Copy the certificate out
+  # with
   #   docker compose cp kubelatch:/tls/server.crt kubelatch-ca.crt
   tls:
-    image: postgres:17
+    image: alpine/openssl:3.5.4@sha256:42c7389ef077aed0eb4e96d0abbd094083d701bbaff1313073b061c0c9cd8278
     entrypoint: ["sh", "-c"]
     command:
       - |
