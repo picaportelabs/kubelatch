@@ -2,6 +2,13 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.42.0 (2026-10-15)
+
+### Changes
+
+- On a phone, **My access** on **Home** now shows one folded block per cluster, with how many permissions each holds; tap a cluster's header to see its permissions. With permissions on a single cluster the block arrives open. The context to copy and **Kubeconfig** stay visible on every block.
+- The local tutorial's `docker-compose.yaml` no longer carries a default version: it runs the release in `KUBELATCH_VERSION`, which step 2 of [Try it locally](https://docs.kubelatch.com/getting-started/local/) now also writes to `.env`, so the server always matches the CLI you downloaded. If you download the new file into a tutorial directory you already have, add that `.env` (`KUBELATCH_VERSION=` and your version) next to it.
+
 ## 0.41.0 (2026-10-15)
 
 ### New

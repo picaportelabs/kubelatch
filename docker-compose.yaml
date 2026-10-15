@@ -47,9 +47,9 @@ services:
       - tls:/tls
 
   kubelatch:
-    # KUBELATCH_VERSION picks another release; the tutorial sets it to the
-    # version of the CLI it downloads.
-    image: ghcr.io/picaportelabs/kubelatch:${KUBELATCH_VERSION:-0.40.0}
+    # KUBELATCH_VERSION is the release to run, such as 0.41.0; the tutorial
+    # sets it to the version of the CLI it downloads and keeps it in .env.
+    image: ghcr.io/picaportelabs/kubelatch:${KUBELATCH_VERSION:?set it to the kubelatch release to run, as step 2 of the local tutorial does}
     depends_on:
       postgres:
         condition: service_healthy
