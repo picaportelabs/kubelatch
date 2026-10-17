@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.43.0 (2026-10-16)
+
+### New
+
+- **Audit** and **My activity** now say which command asked for each request: a row reads `patch deployments/api (shop)` followed by **via rollout restart**, and the requests of one kubectl run fold into a single row with its main request, the command and a button that unfolds them. The detail gains **Command** and **Session**, **More filters** gains **Command**, and a row's menu **Only this session**. The command is what kubectl itself declares with every request (kubectl 1.22 or later; always from 1.35); helm, k9s, Lens and kubectl plugins declare none, and their rows stay as they were. Nothing to configure: [Audit and retention](https://docs.kubelatch.com/operate/audit/#where-the-command-comes-from).
+
 ## 0.42.0 (2026-10-15)
 
 ### Changes
