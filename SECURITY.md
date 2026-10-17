@@ -12,7 +12,7 @@ The latest release. Upgrade notes are in the [release notes](https://docs.kubela
 
 ## How kubelatch is built
 
-One impersonating proxy in front of your clusters, a credential per person, pipeline and agent, an audit row per request, a license key verified offline and no telemetry: <https://docs.kubelatch.com/concepts/security/>. The image is distroless and runs as a non-root user; the chart's defaults are the hardened ones.
+One impersonating proxy in front of your clusters, a credential per person, pipeline and agent, an audit row per request, a license key verified offline and no telemetry: <https://docs.kubelatch.com/concepts/security/>. The image is distroless and runs as a non-root user; the chart's defaults are the hardened ones. Releases after 0.43.0 are signed with the key in [cosign.pub](cosign.pub) and carry a CycloneDX SBOM of the server and of the CLI: <https://docs.kubelatch.com/operate/verify-release/>.
 
 ## Review under NDA
 

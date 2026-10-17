@@ -2,6 +2,13 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.44.0 (2026-10-17)
+
+### New
+
+- A GitHub Actions workflow now gets its kubelatch credential in one step: `uses: picaportelabs/kubelatch-action@v1` with your kubelatch's URL. The action asks GitHub for the job's token, exchanges it, masks the credential and points `KUBECONFIG` at the kubeconfig. The **Workflow snippet** of the **CI** screen and the example in the repository use it. Workflows with the two `curl` steps keep working, and the manual keeps those steps for organisations that allow only their own actions: [Credentials for GitHub Actions](https://docs.kubelatch.com/use/github-actions/).
+- Releases are now signed and carry an SBOM: the checksums file of the binaries, the image and the chart are signed with the key printed in [Verify a release](https://docs.kubelatch.com/operate/verify-release/), the binaries come with a CycloneDX SBOM of the server and of the CLI, and the image carries the server's SBOM as a signed attestation. That page shows how to check each one with cosign.
+
 ## 0.43.0 (2026-10-16)
 
 ### New
