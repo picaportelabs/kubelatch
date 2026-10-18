@@ -6,6 +6,10 @@ Write to **security@kubelatch.com** with what you found, how to reproduce it and
 
 In scope: the kubelatch software (server, CLI, image, chart, plugin), kubelatch.com, docs.kubelatch.com and licensing.kubelatch.com. Out of scope: denial of service, social engineering, and customers' own instances.
 
+## If a vulnerability is being exploited
+
+Picaporte Labs is the manufacturer of kubelatch under the EU Cyber Resilience Act. If we learn that a vulnerability in kubelatch is being actively exploited, or that a build or a release of ours has been tampered with, we notify ENISA and INCIBE-CERT, Spain's coordinating CSIRT, within the deadlines the regulation sets (an early warning within 24 hours, the notification within 72). We tell the affected users what happened and what to do: in a security advisory here, in the release notes of the fix, and by e-mail to license holders.
+
 ## Supported versions
 
 The latest release. Upgrade notes are in the [release notes](https://docs.kubelatch.com/releases/) and the manual.

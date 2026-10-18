@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.45.0 (2026-10-18)
+
+### New
+
+- People can now sign in with your company's identity provider over OpenID Connect: Google Workspace, Microsoft Entra ID, Okta, Keycloak, Authentik, Auth0 or any other provider that publishes its discovery document. Each existing account links itself on its first sign-in when the provider vouches for its e-mail address, the CLI keeps signing in through the browser, and once the provider is configured only break-glass accounts keep a password: flag one before you turn it on. The Helm chart takes the provider under `config.oidc`, and its new `extraEnv` adds variables such as `SSL_CERT_FILE` for a provider behind a private CA. See [OIDC login](https://docs.kubelatch.com/operate/oidc/).
+
 ## 0.44.0 (2026-10-17)
 
 ### New
