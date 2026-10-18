@@ -2,6 +2,16 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.45.1 (2026-10-18)
+
+### Security
+
+- **High severity. Upgrade now.** Fixes flaws in the server's HTTP and TLS handling through which a client that had not signed in could crash the server, make it use up its memory or CPU, or desynchronise a connection. Every earlier release is affected.
+
+### Fixes
+
+- Signing in with an OpenID Connect provider that signs its ID tokens without a key ID now works, as long as the provider publishes a single signing key.
+
 ## 0.45.0 (2026-10-18)
 
 ### New
