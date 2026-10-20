@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.46.1 (2026-10-20)
+
+### Fixes
+
+- When an account signs in through GitHub or your OpenID Connect provider, the dialog for a new linking link now says "Send linking e-mail" on its button instead of "Send reset e-mail".
+
 ## 0.46.0 (2026-10-20)
 
 ### New
