@@ -1,8 +1,10 @@
 # kubelatch on your machine, for the "Try it locally" tutorial:
 #   https://docs.kubelatch.com/getting-started/local/
 #
-# Three services: Postgres, a one-shot job that writes a self-signed
-# certificate for localhost, and kubelatch on https://localhost:8443.
+# Four services: Postgres, a one-shot job that writes a self-signed
+# certificate for localhost, kubelatch on https://localhost:8443, and "net",
+# which holds kubelatch's network. A fifth, Keycloak, starts only with
+# --profile sso, for the step that signs in with it.
 # kubelatch joins the "kind" Docker network to reach the API server of a kind
 # cluster by its container name, so create the kind cluster first:
 #   kind create cluster --name kubelatch-tutorial --kubeconfig ./kind.kubeconfig
@@ -14,6 +16,21 @@
 #   https://docs.kubelatch.com/operate/install/
 name: kubelatch-tutorial
 services:
+  # Holds the network that kubelatch (and Keycloak, with --profile sso) run
+  # in: its ports are theirs, and it joins the kind network for kubelatch.
+  # Keycloak has to share kubelatch's network (see the keycloak service), and
+  # a network held by neither lets kubelatch wait for Keycloak to be ready.
+  net:
+    image: registry.k8s.io/pause:3.10@sha256:ee6521f290b2168b6e0935a181d4cff9be1ac3f505666ef0e3c98fae8199917a
+    ports:
+      - "127.0.0.1:8443:8443"
+      # Keycloak's, with --profile sso.
+      - "127.0.0.1:8081:8081"
+    networks:
+      - default
+      - kind
+    restart: unless-stopped
+
   postgres:
     image: postgres:17
     environment:
@@ -50,11 +67,17 @@ services:
     # KUBELATCH_VERSION is the release to run, such as 0.41.0; the tutorial
     # sets it to the version of the CLI it downloads and keeps it in .env.
     image: ghcr.io/picaportelabs/kubelatch:${KUBELATCH_VERSION:?set it to the kubelatch release to run, as step 2 of the local tutorial does}
+    network_mode: service:net
     depends_on:
       postgres:
         condition: service_healthy
       tls:
         condition: service_completed_successfully
+      # With --profile sso, kubelatch starts once Keycloak is ready, so its
+      # first read of the provider succeeds; without it, this is skipped.
+      keycloak:
+        condition: service_healthy
+        required: false
     environment:
       DATABASE_URL: postgres://kubelatch:kubelatch@postgres:5432/kubelatch?sslmode=disable
       KUBELATCH_ENCRYPTION_KEY: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
@@ -64,14 +87,82 @@ services:
       KUBELATCH_TLS_KEY: /tls/server.key
       # Issued kubeconfigs carry this certificate as their CA.
       KUBELATCH_KUBECONFIG_CA: /tls/server.crt
-    ports:
-      - "127.0.0.1:8443:8443"
+      # OIDC login against the keycloak service below. The tutorial's SSO step
+      # writes the first four to .env; empty, as they are until then, OIDC
+      # login stays off and passwords work as usual.
+      OIDC_ISSUER: ${OIDC_ISSUER:-}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID:-}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:-}
+      OIDC_ALLOWED_DOMAINS: ${OIDC_ALLOWED_DOMAINS:-}
+      OIDC_DISPLAY_NAME: Keycloak
     volumes:
       - tls:/tls:ro
-    networks:
-      - default
-      - kind
     restart: unless-stopped
+
+  # An OpenID provider to sign in with, for the tutorial alone: the realm below
+  # (one client; alice@acme.test verified, bob@acme.test not verified,
+  # carol@other.test outside the allowed domain; password <name>-password; fixed
+  # ids, so each person keeps their subject when Keycloak is recreated), and
+  # the console at http://127.0.0.1:8081 as admin / admin. It runs in
+  # kubelatch's network (the net service), so http://127.0.0.1:8081 reaches it
+  # from the browser and from kubelatch alike: the issuer has to be the same URL for both, and
+  # plain http is allowed only on a loopback address. It is 127.0.0.1 rather
+  # than localhost because kubelatch, on https://localhost:8443, sends HSTS for
+  # localhost, and the browser would then turn http://localhost:8081 into https.
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.5@sha256:37dbaf6f0722c9ec246335f36e1ef8b2e6cb960f7c27e0d8c615121a3d475a85
+    profiles: ["sso"]
+    command: ["start-dev", "--import-realm"]
+    network_mode: service:net
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HOSTNAME: http://127.0.0.1:8081
+      KC_HTTP_PORT: "8081"
+      KC_HEALTH_ENABLED: "true"
+    configs:
+      - source: keycloak-realm
+        target: /opt/keycloak/data/import/kubelatch-realm.json
+    healthcheck:
+      # 200 only once every readiness check is UP. The image has no curl.
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000 && printf 'GET /health/ready HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && head -n1 <&3 | grep -q ' 200 '"]
+      interval: 5s
+      timeout: 5s
+      retries: 36
+      start_period: 20s
+
+configs:
+  keycloak-realm:
+    content: |
+      {
+        "realm": "kubelatch",
+        "displayName": "kubelatch tutorial",
+        "enabled": true,
+        "sslRequired": "none",
+        "registrationAllowed": false,
+        "clients": [
+          {
+            "clientId": "kubelatch",
+            "enabled": true,
+            "protocol": "openid-connect",
+            "publicClient": false,
+            "secret": "kubelatch-tutorial-secret",
+            "standardFlowEnabled": true,
+            "directAccessGrantsEnabled": false,
+            "fullScopeAllowed": false,
+            "redirectUris": ["https://localhost:8443/api/auth/oidc/callback"],
+            "attributes": {"pkce.code.challenge.method": "S256", "post.logout.redirect.uris": "+"}
+          }
+        ],
+        "users": [
+          {"id": "00000000-0000-4000-8000-00000000a11c", "username": "alice", "enabled": true, "email": "alice@acme.test", "emailVerified": true, "firstName": "Alice", "lastName": "Acme",
+           "credentials": [{"type": "password", "value": "alice-password", "temporary": false}]},
+          {"id": "00000000-0000-4000-8000-000000000b0b", "username": "bob", "enabled": true, "email": "bob@acme.test", "emailVerified": false, "firstName": "Bob", "lastName": "Acme",
+           "credentials": [{"type": "password", "value": "bob-password", "temporary": false}]},
+          {"id": "00000000-0000-4000-8000-0000000ca201", "username": "carol", "enabled": true, "email": "carol@other.test", "emailVerified": true, "firstName": "Carol", "lastName": "Other",
+           "credentials": [{"type": "password", "value": "carol-password", "temporary": false}]}
+        ]
+      }
 
 networks:
   # Created by kind with the first cluster.

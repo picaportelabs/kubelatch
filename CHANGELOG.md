@@ -2,6 +2,17 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.46.0 (2026-10-20)
+
+### New
+
+- Native roles give people temporary membership in groups your cluster's own sign-in already knows, with no binding written: the bindings the cluster already has decide what they reach ([Native roles](https://docs.kubelatch.com/operate/roles/#native-roles)). Each cluster can also name people as its SSO does, with an identity template such as `oidc:{email}`, and its page previews the names and flags who can't be named and which names would clash; the default, `user:{login}`, keeps today's names ([Identity in the cluster](https://docs.kubelatch.com/operate/clusters/#identity-in-the-cluster)). When the cluster binds a role's group or a person's name to `cluster-admin`, every permission that gives it needs an expiry of 8 hours at most, checked when granting and again on every reconciliation; such a native role can't be a group permission, and AI agents never receive native roles and keep entering every cluster as `user:<login>`. The cluster's page also lists the groups and users its own bindings name, and the audit detail shows the name each request entered with. Native roles are in every edition and need the current bootstrap manifest ([Update the bootstrap](https://docs.kubelatch.com/operate/clusters/#update-the-bootstrap)).
+- With OIDC login, people without an account no longer stop at the login page. Add a domain under Users and whoever signs in with a verified e-mail of that domain gets an account in the group you chose, with an optional expiry for the membership; removing the rule withdraws those memberships and leaves the accounts. Anyone else can ask to join from the page they land on, and an admin approves the request, with a group, a direct permission or nothing, or denies it with a note only admins see. Both respect Free's limit of five people and leave their trail in the control log. Home now walks a newcomer through installing the CLI, getting a permission and a first `kubectl`, ticking each step as it happens. See [Domain access and join requests](https://docs.kubelatch.com/operate/onboarding/). With two or more replicas, finish rolling the new version out to all of them before you change a cluster's identity template or add a domain: until then a replica still on the old version reconciles the same clusters the old way, and the two undo each other's work on every pass.
+
+### Fixes
+
+- Adding people to a group whose permissions include a cluster that doesn't answer now says which group and which cluster, so you know to fix that cluster or remove the group's permission there.
+
 ## 0.45.1 (2026-10-18)
 
 ### Security

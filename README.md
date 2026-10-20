@@ -2,9 +2,9 @@
 
 # kubelatch
 
-kubelatch gives every person, every CI pipeline and every AI agent its own credential for your Kubernetes clusters, with permissions by role: six system roles, and custom roles you compose. It always knows who has access to what and until when, and it records every request to the API server.
+kubelatch gives people, CI pipelines and AI agents Kubernetes permissions with an end date, on the SSO you already have. Your cluster already knows who signs in; kubelatch adds the rest: how long each permission lasts, what it allows, and a record of every request to the API server. Permissions go by role: six system roles and, in Pro, custom roles you compose.
 
-Without kubelatch, the usual setup is a shared admin kubeconfig or a hand-made ServiceAccount per person: nobody knows who uses it or when it expires. With kubelatch, every credential has an owner, an expiry date and a usage record, and it can be revoked instantly. It works the same on managed clusters (EKS, GKE, AKS) and self-managed ones (kubeadm, k3s, RKE2, Talos).
+Permissions carry an end date, 30 days unless you pick another in the web UI (where **Never** has to be chosen on purpose), and `cluster-admin` never lasts past 8 hours. Every credential belongs to someone, always expires, and stops working on the next request once revoked. Every request through kubelatch leaves one readable audit row, the same on every cloud, and people, pipelines and agents all come in through the same door. For now, the bindings your clusters already give your SSO's groups stay as they are; a kubelatch permission that makes someone a member of those groups for as long as it lasts is on the roadmap. It works the same on managed clusters (EKS, GKE, AKS) and self-managed ones (kubeadm, k3s, RKE2, Talos).
 
 ```mermaid
 flowchart LR
@@ -14,8 +14,9 @@ flowchart LR
     kl --> pg[("Postgres<br/>inventory and audit")]
 ```
 
+**Status:** public preview. It works, but pieces are still missing (they're on the [roadmap](https://docs.kubelatch.com/roadmap/)), there's no stability commitment between versions yet, and only the latest release is supported.
 
-**Editions.** kubelatch is free for a small team: 2 clusters, 5 people and 24 hours of audit. Pro lifts those limits with a license key verified offline, priced per person at [kubelatch.com/pricing](https://kubelatch.com/pricing/), with a 30-day trial. See [Editions and license](https://docs.kubelatch.com/operate/editions/). What we commit to:
+**Editions.** kubelatch is free for a small team: 2 clusters, 5 people, 24 hours of audit and the six system roles. Pro lifts those limits with a license key verified offline, priced per person at [kubelatch.com/pricing](https://kubelatch.com/pricing/), with a 30-day trial. See [Editions and license](https://docs.kubelatch.com/operate/editions/). What we commit to:
 
 - What is in Free stays in Free; its limits only ever loosen.
 - No telemetry: the key is verified offline. The only call kubelatch makes to Picaporte Labs is the daily version check, which fetches a small JSON document, sends nothing and turns off with KUBELATCH_UPDATE_CHECK=false. Air-gapped installations work.
