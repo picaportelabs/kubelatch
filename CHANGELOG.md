@@ -2,6 +2,25 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.47.0 (2026-10-21)
+
+### Before you upgrade
+
+- A permission created through the API without `expires_at`, or with `"expires_at": null`, now expires after 30 days, like one made in the web interface; until now it never expired. To create one with no end date, send `"never_expires": true`; sending it together with `expires_at` is refused. Choosing **Never** in the web interface still creates one with no end date; reload the browser tabs that were open before the upgrade, because a page loaded earlier sends **Never** as a 30-day permission. Scripts that relied on the missing field to grant permanent access must add it.
+
+### Security
+
+- **Medium severity.** Someone able to intercept kubelatch's outgoing connections, to your identity provider, GitHub, the mail service or a cluster, could make kubelatch accept a forged certificate issued under a certificate authority that is no longer trusted. This release fixes it; earlier releases are affected.
+
+### New
+
+- The sign-in screen now shows each provider's logo on its button (Google, Microsoft, Okta, Auth0 and GitHub), all with the same weight, so no provider stands out as the preferred one, even when there is only one. kubelatch recognises the provider from `OIDC_ISSUER`; for an issuer on your own domain, set `OIDC_ICON` to `google`, `microsoft`, `okta`, `auth0` or `generic`. In the chart it is `config.oidc.icon`.
+- In every form that grants a role, native roles now have their own section, showing the cluster groups each one sends. In a group's permissions, and in the first permission of a domain rule, a native role the group cannot take on the chosen cluster, because one of its groups is bound there to cluster-admin, is disabled with the reason before you pick it, so you no longer find out when you save. A group's permissions list the cluster groups of its native roles, and the detail of a permission says which cluster groups the person enters with and the name they enter the cluster as, or why they have none. See [Grant a native role](https://docs.kubelatch.com/operate/roles/#grant-a-native-role).
+
+### Fixes
+
+- An account that the cluster's identity template can't name, such as one without a verified e-mail on a cluster that names people by it, no longer puts the cluster in error. The cluster stays ready and everyone else keeps working; the cluster's page lists those accounts and the clusters list counts them. Those accounts get a 403 on that cluster, and the cluster's identity preview says why for each. See [Accounts that can't be named](https://docs.kubelatch.com/operate/clusters/#accounts-that-cant-be-named).
+
 ## 0.46.1 (2026-10-20)
 
 ### Fixes
