@@ -2,6 +2,31 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.48.0 (2026-10-22)
+
+### Before you upgrade
+
+- Before upgrading, find the permissions that give privileged access, which now need an expiry of 8 hours at most from when they were granted: those of developer, debugger, admin, secrets-reader and the custom roles that run workloads (exec and attach included), read or write Secrets, or write ConfigMaps, on a privileged namespace; those of a native role whose group the cluster gives privileged access; and, on a cluster with an identity template other than the default, those of a person whose name the cluster gives privileged access. A namespace is privileged when it is protected or when one of its ServiceAccounts has privileged access, such as power over the whole cluster, reading every Secret, `edit` in `kube-system` or changing the labels of namespaces, as those of Argo CD, Flux, cert-manager, ingress-nginx or Grafana do; when the cluster gives that to every ServiceAccount, every namespace is ([Privileged namespaces](https://docs.kubelatch.com/concepts/native-sso/#privileged-namespaces)). An expiry can't be shortened: revoke each such permission and grant it again with 8 hours at most. A group permission of one of those roles is refused whatever its expiry: revoke it and grant the role to each person; a permission inherited from a group can't be revoked on its own, so remove the person from the group or revoke the group permission. Otherwise, after the upgrade, a single such permission cuts that access for everyone who shares it, and the cluster shows the cause. Then check **What this cluster knows** on each cluster.
+
+### Security
+
+- **Medium severity.** An administrator could give access with the power of cluster-admin for longer than 8 hours: through a native role whose group the cluster binds to another role with that power, or through a role that runs workloads in a namespace whose ServiceAccounts hold it. kubelatch now reads what the cluster's roles allow and applies the 8-hour rule to every name that gets privileged access, its own roles included, and **What this cluster knows** says which names are privileged and why. If you script the API, the fields that said whether a name is cluster-admin are now `privileged` and `privileged_groups`.
+
+### New
+
+- Each cluster shows its provider (Amazon EKS, Google Kubernetes Engine, Azure Kubernetes Service, DigitalOcean Kubernetes, Red Hat OpenShift, K3s, RKE2 or Kubernetes) on its card and on its page. kubelatch works it out on every reconcile, also for clusters registered before this version, and an administrator can set it by hand on the cluster's page when it guesses wrong. See [Clusters](https://docs.kubelatch.com/operate/clusters/).
+- kubelatch now warns people before a permission expires. In its last hour (its last quarter, for a permission shorter than 4 hours), `kubectl` and every Kubernetes client print a warning that says when the access ends, and AI agents get the same sentence through the MCP. The bell shows everyone the permissions that end within 24 hours. With e-mail set up (`KUBELATCH_RESEND_API_KEY`), each person also gets an e-mail 24 hours before the end (a quarter of its duration before, for a permission of two days or less), which they can turn off in **My account**. It all works in Free. See [Notifications](https://docs.kubelatch.com/operate/notifications/).
+
+### Changes
+
+- Invitation and reset links can now be e-mailed in Free too: with `KUBELATCH_RESEND_API_KEY` and `KUBELATCH_MAIL_FROM` set, **Send by e-mail** works in every edition, with the same hourly limits. If a script reads `features` from `GET /api/me`, it no longer lists `email_links`.
+- Join requests that were approved, denied, cancelled or expired are deleted once they are older than `KUBELATCH_AUDIT_RETENTION`, as the audit is.
+
+### Fixes
+
+- A burst of join requests from one address no longer blocks sign-ins from it, and the other way round: asking to join has its own limit.
+- Saving a cluster's identity template no longer waits while other changes to the cluster are in flight: it saves at once, or answers within two seconds that the cluster is busy and you can try again.
+
 ## 0.47.0 (2026-10-21)
 
 ### Before you upgrade
