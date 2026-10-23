@@ -2,6 +2,26 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.49.0 (2026-10-23)
+
+### New
+
+- Administrators can now disable several accounts at once from **Users**: tick them, choose **Disable**, and the confirmation lists what each one loses (its credentials, sessions and agent sessions) and takes an optional reason. A batch that would leave no administrator able to sign in is refused and names the account. The edition's seat count updates at once.
+- Administrators can now extend several permissions at once. In **Permissions** and on a group's page, tick the permissions, members or group permissions to extend and choose **Extend**: add 7 or 30 days to each one's own date, set one date for all, or remove the end date where the role allows it. The confirmation shows each item's current and new expiry and warns when a date shortens one. A single permission extends from its row menu. A privileged permission keeps its 8-hour limit counted from when it was granted. The **Expiring soon** and **No expiry** figures now filter the list, and the control log shows each batch of extensions as one line.
+- The grant form now takes several clusters at once, each with its namespaces, and grants every combination in one go, all or nothing. On a cluster's page, tick namespaces in the **Namespaces** card and choose **Grant in N namespaces** to open the form with them. On a group's page, **Move to another group** takes the members you tick to another group in one step, with that group's checks, and says what each one gains and loses; someone who is already there only leaves the group they came from.
+- Administrators can now revoke several permissions at once. In **Permissions**, tick the permissions to remove, a whole section, or everything the filter shows, and revoke them with one confirmation that lists them cluster by cluster and takes an optional reason. On a group's page, remove several members or revoke several group permissions the same way. A batch is all or nothing: if one item cannot go, nothing changes and the error names it. After revoking permissions of one role on one cluster, **Grant again** opens the grant form with them. The control log keeps a row for each item and shows the batch as one line with its reason. It works in Free.
+- When a cluster fails to reconcile, its page now explains why in the interface's language, one block per problem, instead of a single English paragraph. Each block names the permissions, group permissions or agent sessions behind the problem and offers the fix: revoke those permissions, open the group, cut the session or update the bootstrap; the full error text is still one click away. The **Clusters** list says how many problems each cluster has and links to them. In **Permissions**, a permission that has no effect because of the 8-hour rule for privileged names is marked **No effect**, the permissions of the people it locks out of that cluster are marked **No access**, and the **No effect** filter lists the first ones so you can revoke them at once. In the API, clusters carry `problems`, an administrator's list of grants carries each one's `effect`, and a failed manual reconcile answers with the number of problems instead of the English text.
+
+### Changes
+
+- Changing the expiry of a disabled account's group membership is now refused, as adding a disabled account to a group already was: enable the account first.
+
+### Fixes
+
+- The permission form says each warning once. When the role needs Pod Security and several chosen namespaces lack it, one warning lists them, each with its label and, when you chose several clusters, its cluster. When a role needs an expiry of 8 hours at most because its namespace is privileged, the warning names the ServiceAccount that makes it so, and the form now checks every namespace you chose, not just the first.
+- Extending a group membership to a later date now checks the group's permissions again, as joining does, and is refused when one of them no longer passes, for example because its namespace lost its Pod Security label; a shorter date is not checked.
+- When a cluster refuses a role in a privileged namespace, its page now says what makes the namespace privileged: the ServiceAccount, what the cluster lets it do and through which binding. The cluster's error says it too.
+
 ## 0.48.0 (2026-10-22)
 
 ### Before you upgrade
