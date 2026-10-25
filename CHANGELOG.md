@@ -2,6 +2,13 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.50.0 (2026-10-25)
+
+### New
+
+- **Home** is now the day's briefing: administrators see what is pending, the last 24 hours and four trends that open into charts of who does what on each cluster, with the anomalies named; everyone sees their week and their clusters. See [Home](https://docs.kubelatch.com/operate/permissions/#home).
+- Every list of permissions reads the same way, one line per permission with who, the role, where, until when and why, and **Permissions** opens on a map of accounts by clusters. See [Grant permissions](https://docs.kubelatch.com/operate/permissions/).
+
 ## 0.49.0 (2026-10-23)
 
 ### New
