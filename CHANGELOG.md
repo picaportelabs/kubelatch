@@ -2,6 +2,18 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.51.0 (2026-10-26)
+
+### New
+
+- In **Agents**, the requests kubelatch refuses at once, such as a role above the one the person holds or a request past the 20 that can wait, are now kept, with the reason the agent was given.
+- With Pro, the Agents page shows what each agent did in the last 24 hours and which agents are worth a look: a flood of approvals, a sensitive access it did not get, or insisting on what was refused. Administrators get a bell notice for each one that leads to it.
+
+### Changes
+
+- `/api/agents/sessions` now lists every active session, not the latest 200, and gives the ended ones a page at a time when `state` is ended. Scripts that read ended sessions from the plain list must ask for them that way.
+- The Agents page now starts with what waits for you, each approval with its countdown, then the agents at work and the recent decisions. It names the agent, such as alice's Claude Code, the confirmation to approve shows the agent's reason, and you can cut several sessions at once.
+
 ## 0.50.0 (2026-10-25)
 
 ### New
