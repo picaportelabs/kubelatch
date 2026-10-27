@@ -2,6 +2,17 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.52.0 (2026-10-27)
+
+### New
+
+- The Groups list says what each group gives, to whom and until when, and filters the groups that never end, give nothing, have nobody or expire this week. Deleting a group names who leaves and what they lose.
+- The Roles list shows each role's type, where it is assigned, who holds it, its last activity (Pro) and who changed it, and filters unassigned, idle and never-ending roles. Permissions shows the role filter and lets you clear it.
+
+### Fixes
+
+- Deleting a role that only a group grants now lists that group's permission and revokes it, instead of failing with no message.
+
 ## 0.51.0 (2026-10-26)
 
 ### New
