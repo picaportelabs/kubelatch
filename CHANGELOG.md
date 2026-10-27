@@ -2,6 +2,16 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.53.0 (2026-10-27)
+
+### Changes
+
+- Users, Credentials and CI count with filter chips instead of figures: press one to see what it counts, and share the link. Audit's figures are read-only: filter by result with the Result chips.
+
+### Fixes
+
+- In Permissions, Clear under an empty result now also empties the search when filter chips are pressed, instead of bringing the text back.
+
 ## 0.52.0 (2026-10-27)
 
 ### New
