@@ -2,6 +2,14 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.54.0 (2026-10-28)
+
+### New
+
+- Every break-glass sign-in is now e-mailed at once to every administrator and to the account itself. It cannot be turned off and needs e-mail set up. The administrators also see it in the bell for 12 hours.
+- On Mondays at 07:00 UTC each administrator gets a summary by e-mail: the permissions that end in the next 7 days, the join requests waiting, the break-glass sign-ins and the new version. It goes out only when there is something to tell.
+- Administrators get the new join requests by e-mail, at most one e-mail an hour each, with a link to Users. It needs e-mail set up.
+
 ## 0.53.0 (2026-10-27)
 
 ### Changes
