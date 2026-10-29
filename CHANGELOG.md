@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.55.1 (2026-10-29)
+
+### Changes
+
+- Webhook messages to Slack and Teams are now cards: a colour per notice, a title, the data in fields and a link to where it is handled. The JSON format only gains the end of the break-glass session.
+
 ## 0.55.0 (2026-10-29)
 
 ### New
