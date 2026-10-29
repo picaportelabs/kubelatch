@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.55.0 (2026-10-29)
+
+### New
+
+- Pro: webhooks. An administrator adds them on the Edition page and receives each notice (a permission that ends, a break-glass sign-in, a join request, a new version) as a signed POST, in JSON or in the format of Slack or Teams. See [Notifications](https://docs.kubelatch.com/operate/notifications/).
+
 ## 0.54.0 (2026-10-28)
 
 ### New
