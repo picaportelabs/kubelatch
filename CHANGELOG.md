@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.55.2 (2026-10-29)
+
+### Fixes
+
+- Slack messages no longer repeat the notice's sentence above the card: it stays as the text of the notification.
+
 ## 0.55.1 (2026-10-29)
 
 ### Changes
