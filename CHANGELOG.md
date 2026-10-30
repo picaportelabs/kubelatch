@@ -2,6 +2,17 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.56.0 (2026-10-30)
+
+### Security
+
+- **Medium severity.** A grant of `developer`, `admin`, `debugger` or a custom role that runs workloads stops taking effect within seconds when its namespace no longer enforces Pod Security `baseline` or `restricted`, or is deleted, and is back once fixed; the problems card says what to do. Upgrading cuts those already affected.
+
+### New
+
+- Notices reach the verified e-mail of an account's OIDC sign-in when it has no e-mail of its own, and an administrator can set or change an account's e-mail from its page.
+- An administrator can send a test e-mail to themselves from My account to check that kubelatch can send mail, and sees what to fix when Resend refuses it.
+
 ## 0.55.2 (2026-10-29)
 
 ### Fixes
