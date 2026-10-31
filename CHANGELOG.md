@@ -2,6 +2,15 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.57.0 (2026-10-31)
+
+### New
+
+- The cluster API now says whether a cluster's Kubernetes version is out of support, whether the cluster gives privileged access to everyone, and whether its latest pass is overdue. A cluster kubelatch cannot reach, or whose token it refuses, is reported as such.
+- Clusters now draws your platform as a diagram: kubelatch in front, a box per provider with its clusters, and what needs attention first: a security block, a cluster kubelatch cannot reach or whose pass is overdue, then the warnings. The List tab holds the same and is the one phones open.
+- Clusters recognises Scaleway Kapsule, Exoscale SKS and OVHcloud Managed Kubernetes on its own, and an administrator can also set Aruba Managed Kubernetes or Talos Linux as a cluster's provider.
+- New setting `KUBELATCH_PROVIDER_LOGOS` (`config.providerLogos` in the Helm chart) chooses which provider logos the interface draws: `published` (the default), `all` or `none`.
+
 ## 0.56.0 (2026-10-30)
 
 ### Security
