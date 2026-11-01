@@ -2,6 +2,21 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.58.0 (2026-11-01)
+
+### New
+
+- A cluster's Access tab can be searched by account and filtered with the Permissions chips (expiring, with problems, no expiry, cluster-admin); long sections fold.
+- A cluster's page shows its latest changes (permissions granted or revoked, its own events) beside its latest requests, and Audit's control plane can be filtered by cluster.
+- When a cluster refuses a person's long permission because the cluster gives that name privileged access, its page can replace it with one of 8 h at most, saying first what that person gets in those hours.
+- `GET /api/control-events` takes `cluster`: the control-plane events of one cluster, its own and those of the permissions on it.
+- Home's Trends has no gaps and links to the new Operations page under Record, which replaces the Expand panel. Its Short-lived credentials figure counts people, bots and AI agents by the credential they used; `GET /api/insights` returns it as `account_access`.
+
+### Changes
+
+- A cluster's page now has three tabs, **Status**, **Access** and **Inside the cluster**, and its header says the same state as **Clusters**. **Needs attention** lists every problem with who it leaves out, by name, since when, and what to do, in the cluster first: see [The cluster's page](https://docs.kubelatch.com/operate/clusters/#the-clusters-page).
+- Past six clusters, Permissions opens on a list of clusters by risk, with who has access and until when, and By account beside it. The map fits the screen and sums up the rest; chips and the search narrow every view. By account also removes all of an account's permissions in one step.
+
 ## 0.57.0 (2026-10-31)
 
 ### New
