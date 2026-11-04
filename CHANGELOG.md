@@ -2,6 +2,16 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.59.0 (2026-11-04)
+
+### New
+
+- Administrators can enroll a cluster from its page by signing in to their identity provider, when the cluster trusts kubelatch's OIDC client; the cluster kubelatch runs in needs nothing pasted. The chart now mounts that cluster's root CA: set `clusterCA.mount` to `false` to turn it off.
+
+### Changes
+
+- Re-enrolling a cluster with your identity reuses its stored address and CA, a failed enrollment says what was left in the cluster and how to fix it, and the form takes a kubectl context and shows the CA's fingerprint ([Enroll with your identity](https://docs.kubelatch.com/operate/clusters/#enroll-with-your-identity)).
+
 ## 0.58.0 (2026-11-01)
 
 ### New
