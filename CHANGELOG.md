@@ -2,6 +2,14 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.60.1 (2026-11-07)
+
+### Fixes
+
+- In Permissions, the Expired and Revoked tabs show an ended permission on a set as one line that opens into its clusters, as Active does.
+- Errors and confirmations write an environment's maximum as a duration in words (1 day, 7 days) instead of 1 d, and the grant form's line on the clusters of a set reads naturally in English.
+- When a cluster makes a group privileged that a permission on a set gives, the cluster's error now says `a permission on a set of … gives it` instead of naming a group permission that does not exist.
+
 ## 0.60.0 (2026-11-07)
 
 ### Before you upgrade
