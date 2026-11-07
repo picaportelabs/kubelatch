@@ -2,6 +2,18 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.60.0 (2026-11-07)
+
+### Before you upgrade
+
+- The hardening policy no longer stops CloudNativePG from managing the chart's database. Apply it again on clusters where you applied it by hand. The operator then applies any pending `Cluster` change, which can restart the database ([details](https://docs.kubelatch.com/operate/upgrade/#the-hardening-policy-and-cloudnativepg)).
+
+### New
+
+- Each cluster can now sit in an [environment](https://docs.kubelatch.com/operate/environments/), such as prod or staging, that an administrator creates and can mark as production, and carry key: value labels. The diagram groups by them, Clusters and Permissions filter by them, Audit by environment, and Home counts sensitive access in production only.
+- With Pro, a [permission on a set](https://docs.kubelatch.com/operate/environments/) follows every cluster of an environment or with a label, for accounts or a group. It reaches each cluster only after the checks a grant there passes, never with privileged access, and moves when a cluster or a rule changes.
+- With Pro, an [environment](https://docs.kubelatch.com/operate/environments/) sets how long people's permissions may last on its clusters and their default expiry. A stricter rule or a move into a stricter environment shortens what passes it once you confirm, never a bot's. Saved rules keep applying without Pro.
+
 ## 0.59.0 (2026-11-04)
 
 ### New
