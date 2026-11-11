@@ -2,6 +2,23 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.61.0 (2026-11-11)
+
+### Security
+
+- **Low severity.** kubelatch is built with Go 1.26.11, which fixes a crash in Go's HTTP server when a request body goes over its limit (CVE-2026-97054). We found no request to kubelatch that triggers it; upgrade at your next window.
+
+### New
+
+- In Pro, whoever decides access requests can approve or deny several at once from the Access requests page, all or nothing. An administrator can also deny several join requests at once in Users.
+- In Pro, ask to extend a permission of yours from its line on Home, from Your week or from the expiry notice and its e-mail: the form says until when it would last and how far an extension can go.
+- In Pro, people ask for a role on a cluster or a namespace for a while, with a reason and a ticket, from Home, `kubelatch request` or the link a 403 now carries; an administrator decides on the request's page, and an environment can grant some roles without approval.
+- `kubelatch status` also lists your access requests that still wait for a decision, each with its link.
+- The Monday summary counts the week's access requests: approved, granted without approval, denied, expired without a decision and still waiting.
+- A permission that came from an access request says on its line who approved it, or that its environment granted it without approval, and whether the request extended it.
+- Every permission can carry a ticket beside its reason (the former note), linked with `KUBELATCH_TICKET_URL` and shown in Activity beside each request it let through; in Pro an environment can require a reason and a ticket on the permissions of people and groups.
+- In Pro, an administrator names the owners of an environment, a cluster, a namespace or a group. Without being administrators, the owners of a place decide its access requests and manage its permissions, and a group's owners manage its members. They see only what they manage.
+
 ## 0.60.1 (2026-11-07)
 
 ### Fixes
