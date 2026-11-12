@@ -1,7 +1,7 @@
 {
   "name": "kubelatch",
   "displayName": "kubelatch",
-  "description": "Kubernetes through kubelatch: its MCP server, a skill with the rules, and a hook that stops direct kubectl, helm and k9s.",
+  "description": "Kubernetes through kubelatch: its MCP server, a skill with the rules, a hook that stops direct kubectl, helm and k9s, and a hook that opens the approval page in your browser.",
   "author": { "name": "Picaporte Labs" },
   "homepage": "https://docs.kubelatch.com/use/ai-agents/",
   "repository": "https://github.com/picaportelabs/kubelatch",
@@ -12,6 +12,12 @@
       "title": "kubelatch URL",
       "description": "The address you open kubelatch at, such as https://kubelatch.example.com, without /mcp and without a trailing slash",
       "required": true
+    },
+    "open_approvals": {
+      "type": "boolean",
+      "title": "Open approval and request pages in your browser",
+      "description": "When an agent's call waits for you, open its approval or request page in your browser (not in the terminal client, which asks you itself)",
+      "default": true
     }
   }
 }

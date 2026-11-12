@@ -1,5 +1,5 @@
 {
-  "description": "Stops direct kubectl, helm and k9s: Kubernetes goes through the kubelatch MCP tools.",
+  "description": "Stops direct kubectl, helm and k9s (Kubernetes goes through the kubelatch MCP tools), and opens the approval or request page in your browser when an agent's call waits for you.",
   "hooks": {
     "PreToolUse": [
       {
@@ -9,6 +9,19 @@
             "type": "command",
             "command": "sh",
             "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/block-direct-kubectl.sh"],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__plugin_kubelatch_kubelatch__(apply|delete_resource|scale|rollout_restart|request_access)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh",
+            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/open-approval.sh", "${user_config.kubelatch_url}", "${user_config.open_approvals}"],
             "timeout": 10
           }
         ]

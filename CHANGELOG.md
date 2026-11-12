@@ -2,6 +2,21 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.62.0 (2026-11-12)
+
+### New
+
+- An agent that asks you for a role now waits for the answer and goes on by itself. When the role is beyond what you hold, it gives you the request form already filled in and continues once you have the role. See [AI agents](https://docs.kubelatch.com/use/ai-agents/).
+- The Claude Code plugin now opens the approval or the request page in your browser when an agent's call waits for you in the VS Code extension, where the client does not ask you itself. An option of the plugin turns it off. See [AI agents](https://docs.kubelatch.com/use/ai-agents/).
+
+### Changes
+
+- An access request you file from the link your agent gives you now opens with the reason the agent proposed, which you can change before sending. The audit log records that the request came from an agent.
+
+### Fixes
+
+- The control plane tab of the audit log now says in words when a permission a person received reached their agent's session, where it showed the event's raw name `agent.grant.follow`.
+
 ## 0.61.0 (2026-11-11)
 
 ### Security

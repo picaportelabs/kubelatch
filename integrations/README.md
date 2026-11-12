@@ -12,3 +12,9 @@ Files that make an AI agent use kubelatch's MCP server instead of reaching the c
 The rules advise, and the hook is a guardrail for an agent that means well, not a boundary: it can be bypassed, and it runs only in Claude Code. What bounds an agent is the permissions kubelatch gives it.
 
 The three copies of the rules carry the same text.
+
+## The plugin opens the page that waits for you
+
+When a call of `apply`, `delete_resource`, `scale`, `rollout_restart` or `request_access` waits for a person, a `PostToolUse` hook (`claude-code/hooks/open-approval.sh`) opens the approval or request page in your browser. It opens only a link that starts with the plugin's kubelatch URL, and never blocks a tool.
+
+It does not open in the terminal client (its own dialog already asks you), over SSH, on Linux without a display, or when you turn off the plugin option `open_approvals`. In those cases the agent shows you the link.
