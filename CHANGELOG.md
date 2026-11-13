@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.63.0 (2026-11-13)
+
+### New
+
+- A custom role granted to a whole cluster can now write cluster-scoped objects of API groups outside Kubernetes, such as the custom resources of your own operators, wherever the cluster serves them without a namespace ([Roles](https://docs.kubelatch.com/concepts/roles/#write-cluster-objects)).
+
 ## 0.62.0 (2026-11-12)
 
 ### New
