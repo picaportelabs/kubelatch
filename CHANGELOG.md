@@ -2,6 +2,47 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.64.0 (2026-11-15)
+
+### Before you upgrade
+
+- Apply the bootstrap again on every managed cluster: its new admission policy keeps kubelatch's own names out of the bindings people write. Until you do, each cluster's page names any such binding ([Update the bootstrap](https://docs.kubelatch.com/operate/clusters/#update-the-bootstrap)).
+
+### Security
+
+- **Medium severity.** An agent's change to an existing object, approved by a person, could run on that object after it had changed, and the agent could turn that check off. An approved change to an existing object now runs only on the object the person saw, or fails.
+- **Medium severity.** A shell, port-forward or log stream left open for longer than the audit retention period lost its audit row. Requests still in progress now keep their row until they end.
+- **Medium severity.** Audit, My activity and Home's denied figure left out the requests kubelatch itself refused (an unknown or revoked token, a disabled account, no permission on the cluster) unless discovery requests were shown. They now appear by default and count as denied.
+- **Medium severity.** A person's CLI session token alone could obtain a role that an environment grants without approval. Such requests now wait for a person to decide; filed from the web, the environment still grants them at once.
+- **Low severity.** Someone holding a cluster's enrollment link, or a cluster's API server, could make kubelatch call other addresses on its network and read back part of the answer. That is no longer possible.
+- **Medium severity.** The owner of a group holding a native role, or another permission only an administrator grants, could hand it to anyone by adding them to the group. Adding members to such a group, or lengthening their membership, is now an administrator's.
+- **Medium severity.** A cluster that broke off an answer while an agent was reading it through kubelatch's MCP server stopped kubelatch for every cluster until it restarted. The call now fails alone.
+- **High severity. Upgrade now.** A person granted admin on a namespace could keep it after the permission expired or was revoked. Apply the bootstrap again on every managed cluster, and delete any binding a cluster's page names.
+- **Medium severity.** Anyone could register OAuth clients until the cap was full, and then no new agent could sign in for 30 days. A client that never completes a sign-in now expires after 6 hours, the oldest unused one makes room at the cap, and a warning event fires as the cap nears.
+- **High severity. Upgrade now.** A registered cluster's API server could make kubectl and other clients send a person's kubelatch credential to another host, or repeat a request on another cluster in their name. If people use clusters that other teams run, consider revoking their long-lived credentials.
+- **Medium severity.** Requests granted without approval could extend the same permission again and again, with no end, where the environment sets no maximum. A permission extended by requests now never ends more than 30 days from now.
+- **High severity. Upgrade now.** A restore test run as the manual described could reach the managed clusters and put back the permissions of the backup, including access revoked since. If you test restores, run the test instance where it cannot reach your clusters, [as the manual now says](https://docs.kubelatch.com/operate/upgrade/#test-a-restore).
+- **Medium severity.** "Remove all permissions" could report success while the account kept its permissions on an environment or a label, when the page had failed to read them. The action now waits for that read, and its dialog says what stays.
+- **Medium severity.** Each sign-in request refused by the per-address limit wrote its own row to the control-plane audit log, so one client could keep filling it. A refused burst now leaves one row per address and minute, and the next row says how many were refused.
+- **Medium severity.** Under heavy load or with a slow database, an open shell, port-forward or watch could keep working for longer than the promised 10 seconds after its access was revoked. kubelatch now keeps that bound, and logs a warning when the database is too slow to.
+
+### New
+
+- Drag the boxes and the clusters of the Clusters diagram to arrange them, or use Move earlier and Move later in their menus; your order stays in your browser and Reset order brings the default back.
+- Clusters shows each cluster's labels as coloured chips in the List and in the diagram's cards, the same colour for the same label everywhere.
+- `KUBELATCH_DB_MAX_CONNS`, or the chart's `postgres.maxConns`, sets the size of the server's connection pool to Postgres, also with the chart's CloudNativePG database.
+
+### Changes
+
+- The Clusters page uses the whole width, and its diagram lays the boxes out in rows, each hanging from kubelatch, so no environment seems to hang from another.
+- Each replica now keeps up to 4 more connections to Postgres for the reconciler alone, so slow clusters no longer take the ones sign-in, the API and the proxy need. Make sure your Postgres allows them.
+
+### Fixes
+
+- When the server answers without the data it should, the CLI now fails with exit status 1 and leaves your kubeconfig as it was, and the web says the server failed, instead of showing that you have no permissions.
+- A permission or membership can no longer be set to expire more than 10 years from now: a date past the year 9999 left the Permissions list, the groups and the CLI empty. To keep one with no end, leave it without an expiry.
+- After the encryption key changes, a webhook whose signing secret can no longer be read is now marked in the Webhooks card of Edition, with what to do: delete it and add it again.
+
 ## 0.63.0 (2026-11-13)
 
 ### New
