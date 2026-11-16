@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.64.2 (2026-11-16)
+
+### Fixes
+
+- Minor fixes.
+
 ## 0.64.1 (2026-11-16)
 
 ### Fixes

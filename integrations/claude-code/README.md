@@ -39,7 +39,7 @@ Don't also add the server with `claude mcp add`, or Claude will see every kubela
 - The `kubectl` hook runs on your computer with `sh` and `awk`. It reads every shell command Claude is about to run and refuses the ones above. It makes no network calls; its only output is the refusal Claude reads.
 - The approval hook reads what `apply`, `delete_resource`, `scale`, `rollout_restart` and `request_access` return. When the result says a person has to decide, it opens the result's link with `xdg-open` on Linux or `open` on macOS, but only an approval or request page under your kubelatch URL (`/agents/requests/…` or `/request?…`), and shows `kubelatch: opening <link> in your browser` in the session.
 - To decide whether to open it, the approval hook reads `CLAUDE_CODE_ENTRYPOINT`, `SSH_CONNECTION`, `DISPLAY` and `WAYLAND_DISPLAY`, and runs `uname`. It opens nothing when Claude Code runs in the terminal, over SSH, on Linux without a display, or on Windows. To turn it off, set **Open approval and request pages in your browser** to off in `/config`.
-- If Claude Code doesn't pass the plugin's two settings to the approval hook, it reads them from `CLAUDE_PLUGIN_OPTION_KUBELATCH_URL` and `CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS`. For the plugin's own tests, `KUBELATCH_HOOK_AWK` and `KUBELATCH_HOOK_OPEN` replace `awk` and the opener.
+- The approval hook reads the plugin's two settings from `CLAUDE_PLUGIN_OPTION_KUBELATCH_URL` and `CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS`, which Claude Code sets for it. For the plugin's own tests, `KUBELATCH_HOOK_AWK` and `KUBELATCH_HOOK_OPEN` replace `awk` and the opener.
 
 ## If something goes wrong
 

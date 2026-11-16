@@ -11,10 +11,12 @@
 # it is opening the link, not that it opened it, and always exits 0: it never
 # blocks a tool.
 #
-# Usage: open-approval.sh <kubelatch_url> [<open_approvals>]
-# Both come from the plugin's userConfig; an empty value, or one Claude Code
-# did not substitute, falls back to CLAUDE_PLUGIN_OPTION_KUBELATCH_URL and
-# CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS.
+# Usage: open-approval.sh [<kubelatch_url> [<open_approvals>]]
+# hooks.json passes no arguments: Anthropic's plugin directory refuses a hook
+# command with a variable other than ${CLAUDE_PLUGIN_ROOT}, so the plugin's
+# two settings come from CLAUDE_PLUGIN_OPTION_KUBELATCH_URL and
+# CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS, which Claude Code exports to every
+# hook. An argument, empty or not substituted, falls back to them too.
 #
 # What it is not: a boundary. It is a convenience. It runs a program with a
 # string that came from a server answer, so the link is opened only when it
@@ -37,7 +39,7 @@
 base=$1
 case $base in '' | *'${'*) base=${CLAUDE_PLUGIN_OPTION_KUBELATCH_URL:-} ;; esac
 enabled=$2
-case $enabled in *'${'*) enabled=${CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS:-} ;; esac
+case $enabled in '' | *'${'*) enabled=${CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS:-} ;; esac
 [ -n "$base" ] || exit 0
 case $enabled in false | False | FALSE | 0 | no | No | NO | off | Off | OFF) exit 0 ;; esac
 
