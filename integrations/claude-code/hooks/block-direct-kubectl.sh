@@ -128,25 +128,36 @@ function subcommand(w, n, i, valued,    j) {
   return 0
 }
 
-function kubectl(w, n, i,    all, j, sc, use) {
+function kubectl(w, n, i,    all, j, k, sc, obj, use) {
   all = joined(w, n, i)
   if (all ~ / (--help|-h) /) return
   j = subcommand(w, n, i, KV)
   if (j == 0) return
   sc = w[j]
+  # The word after the subcommand: what "top" measures, what "rollout" does.
+  k = subcommand(w, n, j, KV)
+  obj = (k > 0) ? w[k] : ""
   if (sc ~ /^(kustomize|completion|help|plugin)$/) return
   if (sc == "version" && all ~ / --client(=true)? /) return
   if (sc == "create" && all ~ / --dry-run=client /) return
   if (sc == "get") use = "list_resources, or get_resource for one object (the values of a Secret: read_secret)"
-  else if (sc == "describe") use = "get_resource and get_events"
+  else if (sc == "describe") use = "describe"
   else if (sc == "logs") use = "get_logs"
   else if (sc == "events") use = "get_events"
   else if (sc ~ /^(api-resources|api-versions|explain)$/) use = "list_api_resources"
   else if (sc ~ /^(apply|create|replace|patch|edit|label|annotate|set)$/) use = "apply, with the whole object"
   else if (sc == "delete") use = "delete_resource, one object at a time"
   else if (sc == "scale") use = "scale"
-  else if (sc == "rollout") use = (w[j + 1] == "restart") ? "rollout_restart" : "get_resource"
-  else if (sc ~ /^(auth|config|cluster-info|whoami)$/) use = "whoami and list_clusters"
+  else if (sc == "rollout") {
+    if (obj == "restart") use = "rollout_restart"
+    else if (obj == "status") use = "rollout_status"
+    else if (obj == "history") use = "get_resource"
+    else use = ""
+  } else if (sc == "top") {
+    if (obj ~ /^(pods?|po)$/) use = "top_pods"
+    else if (obj ~ /^(nodes?|no)$/) use = "top_nodes"
+    else use = "top_pods or top_nodes"
+  } else if (sc ~ /^(auth|config|cluster-info|whoami)$/) use = "whoami and list_clusters"
   else use = ""
   refuse("kubectl " sc, use)
 }

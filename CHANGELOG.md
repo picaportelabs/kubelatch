@@ -2,6 +2,12 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.64.1 (2026-11-16)
+
+### Fixes
+
+- The Claude Code plugin's hook now sends an agent that runs `kubectl top`, `kubectl describe` or `kubectl rollout status` to `top_pods` or `top_nodes`, `describe` and `rollout_status`. Before, `kubectl top` told it to ask you.
+
 ## 0.64.0 (2026-11-15)
 
 ### Before you upgrade

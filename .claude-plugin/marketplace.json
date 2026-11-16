@@ -6,7 +6,7 @@
     {
       "name": "kubelatch",
       "source": "./integrations/claude-code",
-      "description": "Kubernetes through kubelatch: its MCP server, a skill with the rules, and a hook that stops direct kubectl, helm and k9s."
+      "description": "Claude works on your Kubernetes clusters through your own kubelatch server, with only the permissions you give it, for a few hours, and with every request to your clusters on record."
     }
   ]
 }
