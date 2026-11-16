@@ -1,5 +1,8 @@
-#!/bin/sh
 # kubelatch plugin for Claude Code: the PreToolUse hook on Bash.
+#
+# hooks.json runs this file with awk -f ${CLAUDE_PLUGIN_ROOT}/hooks/...: a
+# program of its own, never an inline one behind a command path the shell
+# computes, which Anthropic's plugin directory refuses.
 #
 # Claude Code sends the hook's JSON on stdin. This refuses a command that
 # runs kubectl or helm against a cluster, or k9s: exit 2, and the reason on
@@ -9,9 +12,8 @@
 # agent that means well, not a boundary: what bounds an agent is the
 # permissions kubelatch gives it.
 #
-# POSIX sh and awk only, so it runs wherever Claude Code does.
-# KUBELATCH_HOOK_AWK names the awk to run (the plugin's tests try each one).
-exec "${KUBELATCH_HOOK_AWK:-awk}" '
+# POSIX awk only, so it runs wherever Claude Code does; the plugin's tests run
+# it under each awk on PATH (mawk, gawk, BWK awk).
 BEGIN {
   # Global flags that take a separate value, so the subcommand is found.
   KV = "^(-n|--namespace|--context|--kubeconfig|--cluster|--user|-s|--server|--token|--as|--as-group|--as-uid|--request-timeout|--cache-dir|--certificate-authority|--client-certificate|--client-key|--tls-server-name|-v|--v)$"
@@ -184,4 +186,3 @@ function refuse(what, use) {
   printf "The tools act with the permissions kubelatch gives you and record every call. Start with whoami.\n" > "/dev/stderr"
   exit 2
 }
-'

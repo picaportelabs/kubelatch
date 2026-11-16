@@ -36,10 +36,10 @@ Don't also add the server with `claude mcp add`, or Claude will see every kubela
 
 - Claude Code sends each tool call to your kubelatch server at `<kubelatch URL>/mcp`, after you sign in with OAuth in your browser. The result comes back into your conversation, where Claude reads it like any other tool result, including any Secret values `read_secret` returns. Your clusters see each request as you, with only the permissions you gave Claude, and kubelatch's audit log records it as yours, made through Claude.
 - The plugin sends nothing to Picaporte Labs and has no telemetry.
-- The `kubectl` hook runs on your computer with `sh` and `awk`. It reads every shell command Claude is about to run and refuses the ones above. It makes no network calls; its only output is the refusal Claude reads.
+- The `kubectl` hook runs on your computer with `awk`. It reads every shell command Claude is about to run and refuses the ones above. It makes no network calls; its only output is the refusal Claude reads.
 - The approval hook reads what `apply`, `delete_resource`, `scale`, `rollout_restart` and `request_access` return. When the result says a person has to decide, it opens the result's link with `xdg-open` on Linux or `open` on macOS, but only an approval or request page under your kubelatch URL (`/agents/requests/…` or `/request?…`), and shows `kubelatch: opening <link> in your browser` in the session.
 - To decide whether to open it, the approval hook reads `CLAUDE_CODE_ENTRYPOINT`, `SSH_CONNECTION`, `DISPLAY` and `WAYLAND_DISPLAY`, and runs `uname`. It opens nothing when Claude Code runs in the terminal, over SSH, on Linux without a display, or on Windows. To turn it off, set **Open approval and request pages in your browser** to off in `/config`.
-- The approval hook reads the plugin's two settings from `CLAUDE_PLUGIN_OPTION_KUBELATCH_URL` and `CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS`, which Claude Code sets for it. For the plugin's own tests, `KUBELATCH_HOOK_AWK` and `KUBELATCH_HOOK_OPEN` replace `awk` and the opener.
+- The approval hook reads the plugin's two settings from `CLAUDE_PLUGIN_OPTION_KUBELATCH_URL` and `CLAUDE_PLUGIN_OPTION_OPEN_APPROVALS`, which Claude Code sets for it.
 
 ## If something goes wrong
 

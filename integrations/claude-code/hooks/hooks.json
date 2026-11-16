@@ -7,8 +7,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "sh",
-            "args": ["${CLAUDE_PLUGIN_ROOT}/hooks/block-direct-kubectl.sh"],
+            "command": "awk",
+            "args": ["-f", "${CLAUDE_PLUGIN_ROOT}/hooks/block-direct-kubectl.awk"],
             "timeout": 10
           }
         ]
