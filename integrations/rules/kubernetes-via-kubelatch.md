@@ -23,7 +23,7 @@ This project reaches its Kubernetes clusters through kubelatch's MCP server, the
 | `kubectl rollout status` | `rollout_status`, after an `apply`, a `scale` or a `rollout_restart` |
 | `kubectl top pods`, `kubectl top nodes` | `top_pods` (with `namespace`, `label_selector` and `containers`), `top_nodes`; both need metrics-server in the cluster |
 | `kubectl api-resources` | `list_api_resources` |
-| `kubectl get secret <name> -o jsonpath=…` | `read_secret` |
+| Reading a Secret's values | `read_secret` |
 | `kubectl apply`, `create`, `patch`, `label`, `annotate`, `set image` | `apply`, with the whole object (server-side apply, field manager `kubelatch-mcp`) |
 | `kubectl delete <kind> <name>` | `delete_resource`, one object at a time |
 | `kubectl scale` | `scale` |

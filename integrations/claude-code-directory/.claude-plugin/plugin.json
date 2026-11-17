@@ -1,0 +1,16 @@
+{
+  "name": "kubelatch",
+  "version": "0.64.4",
+  "displayName": "kubelatch",
+  "description": "Claude works on your Kubernetes clusters through your own kubelatch server, with only the permissions you give it, for a few hours, and with every request to your clusters on record. Run /kubelatch:connect with your kubelatch URL to start.",
+  "author": { "name": "Picaporte Labs", "url": "https://kubelatch.com" },
+  "homepage": "https://docs.kubelatch.com/use/ai-agents/",
+  "repository": "https://github.com/picaportelabs/kubelatch",
+  "license": "LicenseRef-kubelatch-EULA",
+  "keywords": ["kubernetes", "kubectl", "helm", "mcp", "rbac", "audit", "kubelatch"],
+  "icon": "./.claude-plugin/icon.png",
+  "documentationUrl": "https://docs.kubelatch.com/use/ai-agents/",
+  "supportUrl": "https://github.com/picaportelabs/kubelatch/blob/main/SUPPORT.md",
+  "privacyPolicyUrl": "https://kubelatch.com/privacy/",
+  "termsOfServiceUrl": "https://kubelatch.com/terms/"
+}
