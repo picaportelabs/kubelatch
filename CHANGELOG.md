@@ -2,6 +2,18 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.65.0 (2026-11-17)
+
+### Before you upgrade
+
+- This release changes the database. Going back to the version before means restoring the backup taken before upgrading ([Upgrade kubelatch](https://docs.kubelatch.com/operate/upgrade/#upgrade-kubelatch)).
+- This release changes the database. Going back to the version before means restoring the backup taken before upgrading ([Upgrade kubelatch](https://docs.kubelatch.com/operate/upgrade/#upgrade-kubelatch)).
+
+### New
+
+- In Pro, a cluster a bot registers can sit under a parent cluster and expire after the time its rule allows, unless the bot renews it; a webhook tells when a cluster is registered, removed or stops answering for 15 minutes ([Clusters registered by a machine](https://docs.kubelatch.com/operate/clusters/#clusters-registered-by-a-machine)).
+- In Pro, a bot can register and remove clusters by itself, such as the virtual clusters an operator creates, within the rule an administrator gives it: which ids, which API addresses, which environment and labels, and how many ([Clusters registered by a machine](https://docs.kubelatch.com/operate/clusters/#clusters-registered-by-a-machine)).
+
 ## 0.64.4 (2026-11-17)
 
 ### Fixes
