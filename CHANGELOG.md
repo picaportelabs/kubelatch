@@ -2,6 +2,16 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.66.0 (2026-11-20)
+
+### New
+
+- The Clusters diagram draws each cluster registered under a parent inside its parent's card, marked Virtual, and its boxes widen into the room the screen leaves so identifiers and labels read in full.
+
+### Fixes
+
+- The Clusters diagram ends at the bottom of the window: the page scrolls only when the drawing is taller than the room left.
+
 ## 0.65.0 (2026-11-17)
 
 ### Before you upgrade
