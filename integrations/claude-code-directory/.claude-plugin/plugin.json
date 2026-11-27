@@ -1,6 +1,6 @@
 {
   "name": "kubelatch",
-  "version": "0.66.0",
+  "version": "0.67.0",
   "displayName": "kubelatch",
   "description": "Claude works on your Kubernetes clusters through your own kubelatch server, with only the permissions you give it, for a few hours, and with every request to your clusters on record. Run /kubelatch:connect with your kubelatch URL to start.",
   "author": { "name": "Picaporte Labs", "url": "https://kubelatch.com" },

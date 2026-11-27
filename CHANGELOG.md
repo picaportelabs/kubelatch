@@ -2,6 +2,27 @@
 
 What changed in each kubelatch release, newest first, written for the people who run it. The same notes, also in Spanish, are at https://docs.kubelatch.com/releases/. Only the latest release is supported.
 
+## 0.67.0 (2026-11-27)
+
+### Before you upgrade
+
+- After upgrading, a cluster refuses requests through kubelatch until the new version has reconciled it once, usually seconds after it starts. If one still refuses them once the upgrade is over, click **Reconcile** on its page ([Permissions and proxy](https://docs.kubelatch.com/operate/troubleshooting/#permissions-and-proxy)).
+- In each virtual cluster, such as a vCluster, apply the bootstrap again after upgrading: until then, inside it a person with admin on a namespace can bind their own name, and an AI agent can bind people and groups ([Virtual clusters](https://docs.kubelatch.com/operate/virtual-clusters/#who-a-request-comes-from)).
+
+### New
+
+- With `KUBELATCH_ADMIN_SELF_APPROVE` on, an administrator approves their own access requests: right after asking, the page offers Approve and Deny, so an agent's request no longer waits for the break-glass account. Owners never can. See [Access requests](https://docs.kubelatch.com/operate/access-requests/).
+- A custom role can now start from a Kubernetes `ClusterRole` YAML pasted or picked on the Roles page or from ⌘K: kubelatch checks it, points at each rule it refuses and opens the builder with its rules. See [Roles](https://docs.kubelatch.com/operate/roles/).
+
+### Changes
+
+- A bot whose writes need approval can no longer write with kubectl through kubelatch using its own tokens: it reads, and writes through the MCP tools, which ask for the approval. Its CI tokens write as before.
+
+### Fixes
+
+- Audit now tells a dry run as the cluster does, from a `DELETE`'s body too: a real deletion with a body and `dryRun=All` in the query no longer shows as a dry run, nor a dry run with its options in the body as a deletion. Earlier rows keep their old reading.
+- From 0.38.0 to 0.66.0, an agent's deletion held for a person's approval deleted the object at once, before anyone decided, even when it was then denied. Deletions held for approval now wait for it.
+
 ## 0.66.0 (2026-11-20)
 
 ### New
